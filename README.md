@@ -19,7 +19,8 @@ AlgoPay Oracle is an infrastructure layer that converts fiat payment events (e.g
 ---
 ## Architecture
 
-<img width="8192" height="198" alt="Algopay Oracle" src="https://github.com/user-attachments/assets/db5029a9-76e8-42ba-a3a8-f303ce151b87" />
+<img width="1920" height="936" alt="arch" src="https://github.com/user-attachments/assets/88fb9f72-5eb9-48f6-a3fd-3d1afcb77e63" />
+
 
 
 ---
