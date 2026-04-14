@@ -1,0 +1,3923 @@
+{
+  "version": 3,
+  "sources": [
+    "AlgoPayOracle.py"
+  ],
+  "mappings": ";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;AA0BA;;;;;;AAAA;;;AAAA;;;;AAAA;;AAAA;AAAA;AAAA;;AAAA;;;AAAA;;;;;;;;;;;;;;;;;;;;;;AAAA;;;AAAA;;;;;;;;;;AAAA;AA4EK;AAAA;AA5EL;;;;;;AAAA;;;AAAA;;;;AAAA;AA0FK;AAAA;;AAAA;AAAA;;AAAA;AAAA;;AAAA;AAAA;AAAA;;;AA/EA;;;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;;AAAA;AAAA;AAAA;AAEG;AAA4B;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;AAA5B;AACA;AAAA;AAAA;AACA;AAA4B;AAA5B;AAJH;AAAA;AAMA;;;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;;AAAA;AAAA;AAAA;;AAAA;AAAA;AAAA;;;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;;AAAA;AAAA;AAAA;;AAAA;AAAA;AAAA;;;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;;;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;;AAAA;AAAA;AAAA;;AAAA;AAAA;AAAA;;;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;;;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;;AAAA;AAAA;AAAA;AAYU;;AAAA;AAAiB;;AAAjB;AAAP;AAGO;;AAA6B;;AAA7B;AAAmC;;AAAA;AAAnC;AAAA;;AAAA;AAAP;AACO;;AAAA;AAAA;AAAgD;;;AAAhD;AAAP;AAMI;;AAAA;;;AAFA;;;;;;;;;;;;;;;AAAA;;AAAA;AAGA;;AAAA;;;AAHA;AAIA;;AAAA;;;AAJA;AAAA;;AAAA;AAAA;;AAAA;AAYA;;AAAA;;;AACA;AAAA;AAAA;AAAA;AAHQ;AAKZ;AAIsB;AAAA;AAAA;;AACf;AAAP;AAEoB;;;AAApB;AACA;AAAA;AAAA;AAAA;AAA6B;AAA7B;AAAA;AAAA;AAAA;AASuB;AAAA;AAAA;AAAA;AALnB;;AAAA;;AAAA;AAAA;AAAA;AAAA;;;AAAA;;;;AAAA;AAAA;AAAA;AAAA;;AAAA;AAAA;AAAA;;AAAA;AAAA;;AAAA;AAAA;;;AAAA;AAAA;AAAA;;AAAA;AAAA;AAAA;;;AAAA;AAAA;;AAAA;AAAA;;AAAA;AAAA;;AAAA;AAAA;;AAAA;AAAA;AAAA;AADJ;;;;;;AAAA;AAAA;AAAA;AA9CH;;;;;;;AAAA;AAAA;AAAA;AAgEA;;;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;;AAAA;AAAA;AAAA;AAEoC;;;AAAX;AAAA;;AACf;;;AAAA;AAAA;;AAAA;AAHV;AAAA;AAAA;AAAA;AAAA;AAAA;AAOsB;AAAA;AAAA;AAAA;AAAZ;AAFV;AAAA;AAAA;AAAA;AAAA;AAAA;AAOO;;AAAiB;;AAAjB;AADJ;AAFH;AAAA",
+  "op_pc_offset": 0,
+  "pc_events": {
+    "1": {
+      "subroutine": "algopy.arc4.ARC4Contract.approval_program",
+      "params": {},
+      "block": "main",
+      "stack_in": [],
+      "op": "intcblock 0 1 2 8"
+    },
+    "7": {
+      "op": "bytecblock \"total_verified\" \"oracle_pubkey\" \"oracle_address\" 0x151f7c75"
+    },
+    "58": {
+      "op": "pushbytes 0xd0439473 // method \"admin()void\"",
+      "defined_out": [
+        "Method(admin()void)"
+      ],
+      "stack_out": [
+        "Method(admin()void)"
+      ]
+    },
+    "64": {
+      "op": "txna ApplicationArgs 0",
+      "defined_out": [
+        "Method(admin()void)",
+        "tmp%0#1"
+      ],
+      "stack_out": [
+        "Method(admin()void)",
+        "tmp%0#1"
+      ]
+    },
+    "67": {
+      "op": "match main_admin_route@4",
+      "stack_out": []
+    },
+    "71": {
+      "block": "main_switch_case_next@5",
+      "stack_in": [],
+      "op": "txn OnCompletion",
+      "defined_out": [
+        "tmp%8#0"
+      ],
+      "stack_out": [
+        "tmp%8#0"
+      ]
+    },
+    "73": {
+      "op": "!",
+      "defined_out": [
+        "tmp%9#0"
+      ],
+      "stack_out": [
+        "tmp%9#0"
+      ]
+    },
+    "74": {
+      "op": "assert",
+      "stack_out": []
+    },
+    "75": {
+      "op": "txn ApplicationID",
+      "defined_out": [
+        "tmp%10#0"
+      ],
+      "stack_out": [
+        "tmp%10#0"
+      ]
+    },
+    "77": {
+      "op": "bz main_create_NoOp@12",
+      "stack_out": []
+    },
+    "80": {
+      "op": "pushbytess 0x5f7a0bf6 0x58759fa2 0xa4b5ea6d 0xf2eb2936 // method \"verify_payment(string,string,uint64,string,uint64,byte[])bool\", method \"nop()void\", method \"check_payment(string)bool\", method \"get_stats()uint64\"",
+      "defined_out": [
+        "Method(check_payment(string)bool)",
+        "Method(get_stats()uint64)",
+        "Method(nop()void)",
+        "Method(verify_payment(string,string,uint64,string,uint64,byte[])bool)"
+      ],
+      "stack_out": [
+        "Method(verify_payment(string,string,uint64,string,uint64,byte[])bool)",
+        "Method(nop()void)",
+        "Method(check_payment(string)bool)",
+        "Method(get_stats()uint64)"
+      ]
+    },
+    "102": {
+      "op": "txna ApplicationArgs 0",
+      "defined_out": [
+        "Method(check_payment(string)bool)",
+        "Method(get_stats()uint64)",
+        "Method(nop()void)",
+        "Method(verify_payment(string,string,uint64,string,uint64,byte[])bool)",
+        "tmp%12#0"
+      ],
+      "stack_out": [
+        "Method(verify_payment(string,string,uint64,string,uint64,byte[])bool)",
+        "Method(nop()void)",
+        "Method(check_payment(string)bool)",
+        "Method(get_stats()uint64)",
+        "tmp%12#0"
+      ]
+    },
+    "105": {
+      "op": "match verify_payment main_nop_route@8 check_payment get_stats",
+      "stack_out": []
+    },
+    "115": {
+      "op": "err"
+    },
+    "116": {
+      "block": "main_nop_route@8",
+      "stack_in": [],
+      "op": "intc_1 // 1",
+      "defined_out": [
+        "1"
+      ],
+      "stack_out": [
+        "1"
+      ]
+    },
+    "117": {
+      "op": "return",
+      "stack_out": []
+    },
+    "118": {
+      "block": "main_create_NoOp@12",
+      "stack_in": [],
+      "op": "pushbytes 0x20df3a54 // method \"create(string)void\"",
+      "defined_out": [
+        "Method(create(string)void)"
+      ],
+      "stack_out": [
+        "Method(create(string)void)"
+      ]
+    },
+    "124": {
+      "op": "txna ApplicationArgs 0",
+      "defined_out": [
+        "Method(create(string)void)",
+        "tmp%13#0"
+      ],
+      "stack_out": [
+        "Method(create(string)void)",
+        "tmp%13#0"
+      ]
+    },
+    "127": {
+      "op": "match create",
+      "stack_out": []
+    },
+    "131": {
+      "op": "err"
+    },
+    "132": {
+      "block": "main_admin_route@4",
+      "stack_in": [],
+      "op": "intc_1 // 1",
+      "defined_out": [
+        "1"
+      ],
+      "stack_out": [
+        "1"
+      ]
+    },
+    "133": {
+      "op": "txn OnCompletion",
+      "defined_out": [
+        "1",
+        "tmp%1#1"
+      ],
+      "stack_out": [
+        "1",
+        "tmp%1#1"
+      ]
+    },
+    "135": {
+      "op": "shl",
+      "defined_out": [
+        "tmp%2#0"
+      ],
+      "stack_out": [
+        "tmp%2#0"
+      ]
+    },
+    "136": {
+      "op": "pushint 48",
+      "defined_out": [
+        "48",
+        "tmp%2#0"
+      ],
+      "stack_out": [
+        "tmp%2#0",
+        "48"
+      ]
+    },
+    "138": {
+      "op": "&",
+      "defined_out": [
+        "tmp%3#0"
+      ],
+      "stack_out": [
+        "tmp%3#0"
+      ]
+    },
+    "139": {
+      "op": "txn ApplicationID",
+      "defined_out": [
+        "tmp%3#0",
+        "tmp%5#0"
+      ],
+      "stack_out": [
+        "tmp%3#0",
+        "tmp%5#0"
+      ]
+    },
+    "141": {
+      "op": "&&",
+      "defined_out": [
+        "tmp%7#0"
+      ],
+      "stack_out": [
+        "tmp%7#0"
+      ]
+    },
+    "142": {
+      "op": "assert",
+      "stack_out": []
+    },
+    "143": {
+      "op": "b admin"
+    },
+    "146": {
+      "subroutine": "AlgoPayOracle.AlgoPayOracle.create[routing]",
+      "params": {},
+      "block": "create",
+      "stack_in": [],
+      "op": "txna ApplicationArgs 1",
+      "defined_out": [
+        "oracle_addr#0"
+      ],
+      "stack_out": [
+        "oracle_addr#0"
+      ]
+    },
+    "149": {
+      "op": "dup",
+      "defined_out": [
+        "oracle_addr#0",
+        "oracle_addr#0 (copy)"
+      ],
+      "stack_out": [
+        "oracle_addr#0",
+        "oracle_addr#0 (copy)"
+      ]
+    },
+    "150": {
+      "op": "intc_0 // 0",
+      "defined_out": [
+        "0",
+        "oracle_addr#0",
+        "oracle_addr#0 (copy)"
+      ],
+      "stack_out": [
+        "oracle_addr#0",
+        "oracle_addr#0 (copy)",
+        "0"
+      ]
+    },
+    "151": {
+      "error": "invalid array length header",
+      "op": "extract_uint16 // on error: invalid array length header",
+      "defined_out": [
+        "aggregate%array_length%0#0",
+        "oracle_addr#0"
+      ],
+      "stack_out": [
+        "oracle_addr#0",
+        "aggregate%array_length%0#0"
+      ]
+    },
+    "152": {
+      "op": "intc_2 // 2",
+      "defined_out": [
+        "2",
+        "aggregate%array_length%0#0",
+        "oracle_addr#0"
+      ],
+      "stack_out": [
+        "oracle_addr#0",
+        "aggregate%array_length%0#0",
+        "2"
+      ]
+    },
+    "153": {
+      "op": "+",
+      "defined_out": [
+        "add%0#0",
+        "oracle_addr#0"
+      ],
+      "stack_out": [
+        "oracle_addr#0",
+        "add%0#0"
+      ]
+    },
+    "154": {
+      "op": "dig 1",
+      "stack_out": [
+        "oracle_addr#0",
+        "add%0#0",
+        "oracle_addr#0 (copy)"
+      ]
+    },
+    "156": {
+      "op": "len",
+      "defined_out": [
+        "add%0#0",
+        "len%0#0",
+        "oracle_addr#0"
+      ],
+      "stack_out": [
+        "oracle_addr#0",
+        "add%0#0",
+        "len%0#0"
+      ]
+    },
+    "157": {
+      "op": "==",
+      "defined_out": [
+        "eq%0#0",
+        "oracle_addr#0"
+      ],
+      "stack_out": [
+        "oracle_addr#0",
+        "eq%0#0"
+      ]
+    },
+    "158": {
+      "error": "invalid number of bytes for arc4.dynamic_array<arc4.uint8>",
+      "op": "assert // invalid number of bytes for arc4.dynamic_array<arc4.uint8>",
+      "stack_out": [
+        "oracle_addr#0"
+      ]
+    },
+    "159": {
+      "op": "bytec_1 // \"oracle_pubkey\"",
+      "defined_out": [
+        "\"oracle_pubkey\"",
+        "oracle_addr#0"
+      ],
+      "stack_out": [
+        "oracle_addr#0",
+        "\"oracle_pubkey\""
+      ]
+    },
+    "160": {
+      "op": "pushbytes 0xf3af36be0b65eca73fbe33e133b50b7f6931b46f30e8005425266da5a91c9912",
+      "defined_out": [
+        "\"oracle_pubkey\"",
+        "0xf3af36be0b65eca73fbe33e133b50b7f6931b46f30e8005425266da5a91c9912",
+        "oracle_addr#0"
+      ],
+      "stack_out": [
+        "oracle_addr#0",
+        "\"oracle_pubkey\"",
+        "0xf3af36be0b65eca73fbe33e133b50b7f6931b46f30e8005425266da5a91c9912"
+      ]
+    },
+    "194": {
+      "op": "app_global_put",
+      "stack_out": [
+        "oracle_addr#0"
+      ]
+    },
+    "195": {
+      "op": "bytec_2 // \"oracle_address\"",
+      "defined_out": [
+        "\"oracle_address\"",
+        "oracle_addr#0"
+      ],
+      "stack_out": [
+        "oracle_addr#0",
+        "\"oracle_address\""
+      ]
+    },
+    "196": {
+      "op": "swap",
+      "stack_out": [
+        "\"oracle_address\"",
+        "oracle_addr#0"
+      ]
+    },
+    "197": {
+      "op": "app_global_put",
+      "stack_out": []
+    },
+    "198": {
+      "op": "bytec_0 // \"total_verified\"",
+      "defined_out": [
+        "\"total_verified\""
+      ],
+      "stack_out": [
+        "\"total_verified\""
+      ]
+    },
+    "199": {
+      "op": "intc_0 // 0",
+      "stack_out": [
+        "\"total_verified\"",
+        "0"
+      ]
+    },
+    "200": {
+      "op": "app_global_put",
+      "stack_out": []
+    },
+    "201": {
+      "op": "intc_1 // 1",
+      "defined_out": [
+        "1"
+      ],
+      "stack_out": [
+        "1"
+      ]
+    },
+    "202": {
+      "op": "return",
+      "stack_out": []
+    },
+    "203": {
+      "subroutine": "AlgoPayOracle.AlgoPayOracle.verify_payment[routing]",
+      "params": {},
+      "block": "verify_payment",
+      "stack_in": [],
+      "op": "txna ApplicationArgs 1",
+      "defined_out": [
+        "payment_id#0"
+      ],
+      "stack_out": [
+        "payment_id#0"
+      ]
+    },
+    "206": {
+      "op": "dup",
+      "defined_out": [
+        "payment_id#0",
+        "payment_id#0 (copy)"
+      ],
+      "stack_out": [
+        "payment_id#0",
+        "payment_id#0 (copy)"
+      ]
+    },
+    "207": {
+      "op": "intc_0 // 0",
+      "defined_out": [
+        "0",
+        "payment_id#0",
+        "payment_id#0 (copy)"
+      ],
+      "stack_out": [
+        "payment_id#0",
+        "payment_id#0 (copy)",
+        "0"
+      ]
+    },
+    "208": {
+      "error": "invalid array length header",
+      "op": "extract_uint16 // on error: invalid array length header",
+      "defined_out": [
+        "aggregate%array_length%0#0",
+        "payment_id#0"
+      ],
+      "stack_out": [
+        "payment_id#0",
+        "aggregate%array_length%0#0"
+      ]
+    },
+    "209": {
+      "op": "intc_2 // 2",
+      "defined_out": [
+        "2",
+        "aggregate%array_length%0#0",
+        "payment_id#0"
+      ],
+      "stack_out": [
+        "payment_id#0",
+        "aggregate%array_length%0#0",
+        "2"
+      ]
+    },
+    "210": {
+      "op": "+",
+      "defined_out": [
+        "add%0#0",
+        "payment_id#0"
+      ],
+      "stack_out": [
+        "payment_id#0",
+        "add%0#0"
+      ]
+    },
+    "211": {
+      "op": "dig 1",
+      "stack_out": [
+        "payment_id#0",
+        "add%0#0",
+        "payment_id#0 (copy)"
+      ]
+    },
+    "213": {
+      "op": "len",
+      "defined_out": [
+        "add%0#0",
+        "len%0#0",
+        "payment_id#0"
+      ],
+      "stack_out": [
+        "payment_id#0",
+        "add%0#0",
+        "len%0#0"
+      ]
+    },
+    "214": {
+      "op": "dup",
+      "defined_out": [
+        "add%0#0",
+        "len%0#0",
+        "len%0#0 (copy)",
+        "payment_id#0"
+      ],
+      "stack_out": [
+        "payment_id#0",
+        "add%0#0",
+        "len%0#0",
+        "len%0#0 (copy)"
+      ]
+    },
+    "215": {
+      "op": "uncover 2",
+      "stack_out": [
+        "payment_id#0",
+        "len%0#0",
+        "len%0#0 (copy)",
+        "add%0#0"
+      ]
+    },
+    "217": {
+      "op": "==",
+      "defined_out": [
+        "eq%0#0",
+        "len%0#0",
+        "payment_id#0"
+      ],
+      "stack_out": [
+        "payment_id#0",
+        "len%0#0",
+        "eq%0#0"
+      ]
+    },
+    "218": {
+      "error": "invalid number of bytes for arc4.dynamic_array<arc4.uint8>",
+      "op": "assert // invalid number of bytes for arc4.dynamic_array<arc4.uint8>",
+      "stack_out": [
+        "payment_id#0",
+        "len%0#0"
+      ]
+    },
+    "219": {
+      "op": "txna ApplicationArgs 2",
+      "defined_out": [
+        "action#0",
+        "len%0#0",
+        "payment_id#0"
+      ],
+      "stack_out": [
+        "payment_id#0",
+        "len%0#0",
+        "action#0"
+      ]
+    },
+    "222": {
+      "op": "dup",
+      "defined_out": [
+        "action#0",
+        "action#0 (copy)",
+        "len%0#0",
+        "payment_id#0"
+      ],
+      "stack_out": [
+        "payment_id#0",
+        "len%0#0",
+        "action#0",
+        "action#0 (copy)"
+      ]
+    },
+    "223": {
+      "op": "intc_0 // 0",
+      "stack_out": [
+        "payment_id#0",
+        "len%0#0",
+        "action#0",
+        "action#0 (copy)",
+        "0"
+      ]
+    },
+    "224": {
+      "error": "invalid array length header",
+      "op": "extract_uint16 // on error: invalid array length header",
+      "defined_out": [
+        "action#0",
+        "aggregate%array_length%1#0",
+        "len%0#0",
+        "payment_id#0"
+      ],
+      "stack_out": [
+        "payment_id#0",
+        "len%0#0",
+        "action#0",
+        "aggregate%array_length%1#0"
+      ]
+    },
+    "225": {
+      "op": "intc_2 // 2",
+      "stack_out": [
+        "payment_id#0",
+        "len%0#0",
+        "action#0",
+        "aggregate%array_length%1#0",
+        "2"
+      ]
+    },
+    "226": {
+      "op": "+",
+      "defined_out": [
+        "action#0",
+        "add%1#0",
+        "len%0#0",
+        "payment_id#0"
+      ],
+      "stack_out": [
+        "payment_id#0",
+        "len%0#0",
+        "action#0",
+        "add%1#0"
+      ]
+    },
+    "227": {
+      "op": "dig 1",
+      "stack_out": [
+        "payment_id#0",
+        "len%0#0",
+        "action#0",
+        "add%1#0",
+        "action#0 (copy)"
+      ]
+    },
+    "229": {
+      "op": "len",
+      "defined_out": [
+        "action#0",
+        "add%1#0",
+        "len%0#0",
+        "len%1#0",
+        "payment_id#0"
+      ],
+      "stack_out": [
+        "payment_id#0",
+        "len%0#0",
+        "action#0",
+        "add%1#0",
+        "len%1#0"
+      ]
+    },
+    "230": {
+      "op": "dup",
+      "defined_out": [
+        "action#0",
+        "add%1#0",
+        "len%0#0",
+        "len%1#0",
+        "len%1#0 (copy)",
+        "payment_id#0"
+      ],
+      "stack_out": [
+        "payment_id#0",
+        "len%0#0",
+        "action#0",
+        "add%1#0",
+        "len%1#0",
+        "len%1#0 (copy)"
+      ]
+    },
+    "231": {
+      "op": "uncover 2",
+      "stack_out": [
+        "payment_id#0",
+        "len%0#0",
+        "action#0",
+        "len%1#0",
+        "len%1#0 (copy)",
+        "add%1#0"
+      ]
+    },
+    "233": {
+      "op": "==",
+      "defined_out": [
+        "action#0",
+        "eq%1#0",
+        "len%0#0",
+        "len%1#0",
+        "payment_id#0"
+      ],
+      "stack_out": [
+        "payment_id#0",
+        "len%0#0",
+        "action#0",
+        "len%1#0",
+        "eq%1#0"
+      ]
+    },
+    "234": {
+      "error": "invalid number of bytes for arc4.dynamic_array<arc4.uint8>",
+      "op": "assert // invalid number of bytes for arc4.dynamic_array<arc4.uint8>",
+      "stack_out": [
+        "payment_id#0",
+        "len%0#0",
+        "action#0",
+        "len%1#0"
+      ]
+    },
+    "235": {
+      "op": "txna ApplicationArgs 3",
+      "defined_out": [
+        "action#0",
+        "amount#0",
+        "len%0#0",
+        "len%1#0",
+        "payment_id#0"
+      ],
+      "stack_out": [
+        "payment_id#0",
+        "len%0#0",
+        "action#0",
+        "len%1#0",
+        "amount#0"
+      ]
+    },
+    "238": {
+      "op": "dup",
+      "defined_out": [
+        "action#0",
+        "amount#0",
+        "amount#0 (copy)",
+        "len%0#0",
+        "len%1#0",
+        "payment_id#0"
+      ],
+      "stack_out": [
+        "payment_id#0",
+        "len%0#0",
+        "action#0",
+        "len%1#0",
+        "amount#0",
+        "amount#0 (copy)"
+      ]
+    },
+    "239": {
+      "op": "len",
+      "defined_out": [
+        "action#0",
+        "amount#0",
+        "len%0#0",
+        "len%1#0",
+        "len%2#0",
+        "payment_id#0"
+      ],
+      "stack_out": [
+        "payment_id#0",
+        "len%0#0",
+        "action#0",
+        "len%1#0",
+        "amount#0",
+        "len%2#0"
+      ]
+    },
+    "240": {
+      "op": "intc_3 // 8",
+      "defined_out": [
+        "8",
+        "action#0",
+        "amount#0",
+        "len%0#0",
+        "len%1#0",
+        "len%2#0",
+        "payment_id#0"
+      ],
+      "stack_out": [
+        "payment_id#0",
+        "len%0#0",
+        "action#0",
+        "len%1#0",
+        "amount#0",
+        "len%2#0",
+        "8"
+      ]
+    },
+    "241": {
+      "op": "==",
+      "defined_out": [
+        "action#0",
+        "amount#0",
+        "eq%2#0",
+        "len%0#0",
+        "len%1#0",
+        "payment_id#0"
+      ],
+      "stack_out": [
+        "payment_id#0",
+        "len%0#0",
+        "action#0",
+        "len%1#0",
+        "amount#0",
+        "eq%2#0"
+      ]
+    },
+    "242": {
+      "error": "invalid number of bytes for arc4.uint64",
+      "op": "assert // invalid number of bytes for arc4.uint64",
+      "stack_out": [
+        "payment_id#0",
+        "len%0#0",
+        "action#0",
+        "len%1#0",
+        "amount#0"
+      ]
+    },
+    "243": {
+      "op": "txna ApplicationArgs 4",
+      "defined_out": [
+        "action#0",
+        "amount#0",
+        "currency#0",
+        "len%0#0",
+        "len%1#0",
+        "payment_id#0"
+      ],
+      "stack_out": [
+        "payment_id#0",
+        "len%0#0",
+        "action#0",
+        "len%1#0",
+        "amount#0",
+        "currency#0"
+      ]
+    },
+    "246": {
+      "op": "dup",
+      "defined_out": [
+        "action#0",
+        "amount#0",
+        "currency#0",
+        "currency#0 (copy)",
+        "len%0#0",
+        "len%1#0",
+        "payment_id#0"
+      ],
+      "stack_out": [
+        "payment_id#0",
+        "len%0#0",
+        "action#0",
+        "len%1#0",
+        "amount#0",
+        "currency#0",
+        "currency#0 (copy)"
+      ]
+    },
+    "247": {
+      "op": "intc_0 // 0",
+      "stack_out": [
+        "payment_id#0",
+        "len%0#0",
+        "action#0",
+        "len%1#0",
+        "amount#0",
+        "currency#0",
+        "currency#0 (copy)",
+        "0"
+      ]
+    },
+    "248": {
+      "error": "invalid array length header",
+      "op": "extract_uint16 // on error: invalid array length header",
+      "defined_out": [
+        "action#0",
+        "aggregate%array_length%2#0",
+        "amount#0",
+        "currency#0",
+        "len%0#0",
+        "len%1#0",
+        "payment_id#0"
+      ],
+      "stack_out": [
+        "payment_id#0",
+        "len%0#0",
+        "action#0",
+        "len%1#0",
+        "amount#0",
+        "currency#0",
+        "aggregate%array_length%2#0"
+      ]
+    },
+    "249": {
+      "op": "intc_2 // 2",
+      "stack_out": [
+        "payment_id#0",
+        "len%0#0",
+        "action#0",
+        "len%1#0",
+        "amount#0",
+        "currency#0",
+        "aggregate%array_length%2#0",
+        "2"
+      ]
+    },
+    "250": {
+      "op": "+",
+      "defined_out": [
+        "action#0",
+        "add%2#0",
+        "amount#0",
+        "currency#0",
+        "len%0#0",
+        "len%1#0",
+        "payment_id#0"
+      ],
+      "stack_out": [
+        "payment_id#0",
+        "len%0#0",
+        "action#0",
+        "len%1#0",
+        "amount#0",
+        "currency#0",
+        "add%2#0"
+      ]
+    },
+    "251": {
+      "op": "dig 1",
+      "stack_out": [
+        "payment_id#0",
+        "len%0#0",
+        "action#0",
+        "len%1#0",
+        "amount#0",
+        "currency#0",
+        "add%2#0",
+        "currency#0 (copy)"
+      ]
+    },
+    "253": {
+      "op": "len",
+      "defined_out": [
+        "action#0",
+        "add%2#0",
+        "amount#0",
+        "currency#0",
+        "len%0#0",
+        "len%1#0",
+        "len%3#0",
+        "payment_id#0"
+      ],
+      "stack_out": [
+        "payment_id#0",
+        "len%0#0",
+        "action#0",
+        "len%1#0",
+        "amount#0",
+        "currency#0",
+        "add%2#0",
+        "len%3#0"
+      ]
+    },
+    "254": {
+      "op": "dup",
+      "defined_out": [
+        "action#0",
+        "add%2#0",
+        "amount#0",
+        "currency#0",
+        "len%0#0",
+        "len%1#0",
+        "len%3#0",
+        "len%3#0 (copy)",
+        "payment_id#0"
+      ],
+      "stack_out": [
+        "payment_id#0",
+        "len%0#0",
+        "action#0",
+        "len%1#0",
+        "amount#0",
+        "currency#0",
+        "add%2#0",
+        "len%3#0",
+        "len%3#0 (copy)"
+      ]
+    },
+    "255": {
+      "op": "uncover 2",
+      "stack_out": [
+        "payment_id#0",
+        "len%0#0",
+        "action#0",
+        "len%1#0",
+        "amount#0",
+        "currency#0",
+        "len%3#0",
+        "len%3#0 (copy)",
+        "add%2#0"
+      ]
+    },
+    "257": {
+      "op": "==",
+      "defined_out": [
+        "action#0",
+        "amount#0",
+        "currency#0",
+        "eq%3#0",
+        "len%0#0",
+        "len%1#0",
+        "len%3#0",
+        "payment_id#0"
+      ],
+      "stack_out": [
+        "payment_id#0",
+        "len%0#0",
+        "action#0",
+        "len%1#0",
+        "amount#0",
+        "currency#0",
+        "len%3#0",
+        "eq%3#0"
+      ]
+    },
+    "258": {
+      "error": "invalid number of bytes for arc4.dynamic_array<arc4.uint8>",
+      "op": "assert // invalid number of bytes for arc4.dynamic_array<arc4.uint8>",
+      "stack_out": [
+        "payment_id#0",
+        "len%0#0",
+        "action#0",
+        "len%1#0",
+        "amount#0",
+        "currency#0",
+        "len%3#0"
+      ]
+    },
+    "259": {
+      "op": "txna ApplicationArgs 5",
+      "defined_out": [
+        "action#0",
+        "amount#0",
+        "currency#0",
+        "len%0#0",
+        "len%1#0",
+        "len%3#0",
+        "payment_id#0",
+        "timestamp#0"
+      ],
+      "stack_out": [
+        "payment_id#0",
+        "len%0#0",
+        "action#0",
+        "len%1#0",
+        "amount#0",
+        "currency#0",
+        "len%3#0",
+        "timestamp#0"
+      ]
+    },
+    "262": {
+      "op": "dup",
+      "defined_out": [
+        "action#0",
+        "amount#0",
+        "currency#0",
+        "len%0#0",
+        "len%1#0",
+        "len%3#0",
+        "payment_id#0",
+        "timestamp#0",
+        "timestamp#0 (copy)"
+      ],
+      "stack_out": [
+        "payment_id#0",
+        "len%0#0",
+        "action#0",
+        "len%1#0",
+        "amount#0",
+        "currency#0",
+        "len%3#0",
+        "timestamp#0",
+        "timestamp#0 (copy)"
+      ]
+    },
+    "263": {
+      "op": "len",
+      "defined_out": [
+        "action#0",
+        "amount#0",
+        "currency#0",
+        "len%0#0",
+        "len%1#0",
+        "len%3#0",
+        "len%4#0",
+        "payment_id#0",
+        "timestamp#0"
+      ],
+      "stack_out": [
+        "payment_id#0",
+        "len%0#0",
+        "action#0",
+        "len%1#0",
+        "amount#0",
+        "currency#0",
+        "len%3#0",
+        "timestamp#0",
+        "len%4#0"
+      ]
+    },
+    "264": {
+      "op": "intc_3 // 8",
+      "stack_out": [
+        "payment_id#0",
+        "len%0#0",
+        "action#0",
+        "len%1#0",
+        "amount#0",
+        "currency#0",
+        "len%3#0",
+        "timestamp#0",
+        "len%4#0",
+        "8"
+      ]
+    },
+    "265": {
+      "op": "==",
+      "defined_out": [
+        "action#0",
+        "amount#0",
+        "currency#0",
+        "eq%4#0",
+        "len%0#0",
+        "len%1#0",
+        "len%3#0",
+        "payment_id#0",
+        "timestamp#0"
+      ],
+      "stack_out": [
+        "payment_id#0",
+        "len%0#0",
+        "action#0",
+        "len%1#0",
+        "amount#0",
+        "currency#0",
+        "len%3#0",
+        "timestamp#0",
+        "eq%4#0"
+      ]
+    },
+    "266": {
+      "error": "invalid number of bytes for arc4.uint64",
+      "op": "assert // invalid number of bytes for arc4.uint64",
+      "stack_out": [
+        "payment_id#0",
+        "len%0#0",
+        "action#0",
+        "len%1#0",
+        "amount#0",
+        "currency#0",
+        "len%3#0",
+        "timestamp#0"
+      ]
+    },
+    "267": {
+      "op": "txna ApplicationArgs 6",
+      "defined_out": [
+        "action#0",
+        "amount#0",
+        "currency#0",
+        "len%0#0",
+        "len%1#0",
+        "len%3#0",
+        "payment_id#0",
+        "signature#0",
+        "timestamp#0"
+      ],
+      "stack_out": [
+        "payment_id#0",
+        "len%0#0",
+        "action#0",
+        "len%1#0",
+        "amount#0",
+        "currency#0",
+        "len%3#0",
+        "timestamp#0",
+        "signature#0"
+      ]
+    },
+    "270": {
+      "op": "dup",
+      "defined_out": [
+        "action#0",
+        "amount#0",
+        "currency#0",
+        "len%0#0",
+        "len%1#0",
+        "len%3#0",
+        "payment_id#0",
+        "signature#0",
+        "signature#0 (copy)",
+        "timestamp#0"
+      ],
+      "stack_out": [
+        "payment_id#0",
+        "len%0#0",
+        "action#0",
+        "len%1#0",
+        "amount#0",
+        "currency#0",
+        "len%3#0",
+        "timestamp#0",
+        "signature#0",
+        "signature#0 (copy)"
+      ]
+    },
+    "271": {
+      "op": "intc_0 // 0",
+      "stack_out": [
+        "payment_id#0",
+        "len%0#0",
+        "action#0",
+        "len%1#0",
+        "amount#0",
+        "currency#0",
+        "len%3#0",
+        "timestamp#0",
+        "signature#0",
+        "signature#0 (copy)",
+        "0"
+      ]
+    },
+    "272": {
+      "error": "invalid array length header",
+      "op": "extract_uint16 // on error: invalid array length header",
+      "defined_out": [
+        "action#0",
+        "aggregate%array_length%3#0",
+        "amount#0",
+        "currency#0",
+        "len%0#0",
+        "len%1#0",
+        "len%3#0",
+        "payment_id#0",
+        "signature#0",
+        "timestamp#0"
+      ],
+      "stack_out": [
+        "payment_id#0",
+        "len%0#0",
+        "action#0",
+        "len%1#0",
+        "amount#0",
+        "currency#0",
+        "len%3#0",
+        "timestamp#0",
+        "signature#0",
+        "aggregate%array_length%3#0"
+      ]
+    },
+    "273": {
+      "op": "intc_2 // 2",
+      "stack_out": [
+        "payment_id#0",
+        "len%0#0",
+        "action#0",
+        "len%1#0",
+        "amount#0",
+        "currency#0",
+        "len%3#0",
+        "timestamp#0",
+        "signature#0",
+        "aggregate%array_length%3#0",
+        "2"
+      ]
+    },
+    "274": {
+      "op": "+",
+      "defined_out": [
+        "action#0",
+        "add%3#0",
+        "amount#0",
+        "currency#0",
+        "len%0#0",
+        "len%1#0",
+        "len%3#0",
+        "payment_id#0",
+        "signature#0",
+        "timestamp#0"
+      ],
+      "stack_out": [
+        "payment_id#0",
+        "len%0#0",
+        "action#0",
+        "len%1#0",
+        "amount#0",
+        "currency#0",
+        "len%3#0",
+        "timestamp#0",
+        "signature#0",
+        "add%3#0"
+      ]
+    },
+    "275": {
+      "op": "dig 1",
+      "stack_out": [
+        "payment_id#0",
+        "len%0#0",
+        "action#0",
+        "len%1#0",
+        "amount#0",
+        "currency#0",
+        "len%3#0",
+        "timestamp#0",
+        "signature#0",
+        "add%3#0",
+        "signature#0 (copy)"
+      ]
+    },
+    "277": {
+      "op": "len",
+      "defined_out": [
+        "action#0",
+        "add%3#0",
+        "amount#0",
+        "currency#0",
+        "len%0#0",
+        "len%1#0",
+        "len%3#0",
+        "len%5#0",
+        "payment_id#0",
+        "signature#0",
+        "timestamp#0"
+      ],
+      "stack_out": [
+        "payment_id#0",
+        "len%0#0",
+        "action#0",
+        "len%1#0",
+        "amount#0",
+        "currency#0",
+        "len%3#0",
+        "timestamp#0",
+        "signature#0",
+        "add%3#0",
+        "len%5#0"
+      ]
+    },
+    "278": {
+      "op": "==",
+      "defined_out": [
+        "action#0",
+        "amount#0",
+        "currency#0",
+        "eq%5#0",
+        "len%0#0",
+        "len%1#0",
+        "len%3#0",
+        "payment_id#0",
+        "signature#0",
+        "timestamp#0"
+      ],
+      "stack_out": [
+        "payment_id#0",
+        "len%0#0",
+        "action#0",
+        "len%1#0",
+        "amount#0",
+        "currency#0",
+        "len%3#0",
+        "timestamp#0",
+        "signature#0",
+        "eq%5#0"
+      ]
+    },
+    "279": {
+      "error": "invalid number of bytes for arc4.dynamic_array<arc4.uint8>",
+      "op": "assert // invalid number of bytes for arc4.dynamic_array<arc4.uint8>",
+      "stack_out": [
+        "payment_id#0",
+        "len%0#0",
+        "action#0",
+        "len%1#0",
+        "amount#0",
+        "currency#0",
+        "len%3#0",
+        "timestamp#0",
+        "signature#0"
+      ]
+    },
+    "280": {
+      "op": "dig 4",
+      "stack_out": [
+        "payment_id#0",
+        "len%0#0",
+        "action#0",
+        "len%1#0",
+        "amount#0",
+        "currency#0",
+        "len%3#0",
+        "timestamp#0",
+        "signature#0",
+        "amount#0 (copy)"
+      ]
+    },
+    "282": {
+      "op": "btoi",
+      "defined_out": [
+        "action#0",
+        "amount#0",
+        "currency#0",
+        "len%0#0",
+        "len%1#0",
+        "len%3#0",
+        "payment_id#0",
+        "signature#0",
+        "timestamp#0",
+        "tmp%0#1"
+      ],
+      "stack_out": [
+        "payment_id#0",
+        "len%0#0",
+        "action#0",
+        "len%1#0",
+        "amount#0",
+        "currency#0",
+        "len%3#0",
+        "timestamp#0",
+        "signature#0",
+        "tmp%0#1"
+      ]
+    },
+    "283": {
+      "op": "pushint 100",
+      "defined_out": [
+        "100",
+        "action#0",
+        "amount#0",
+        "currency#0",
+        "len%0#0",
+        "len%1#0",
+        "len%3#0",
+        "payment_id#0",
+        "signature#0",
+        "timestamp#0",
+        "tmp%0#1"
+      ],
+      "stack_out": [
+        "payment_id#0",
+        "len%0#0",
+        "action#0",
+        "len%1#0",
+        "amount#0",
+        "currency#0",
+        "len%3#0",
+        "timestamp#0",
+        "signature#0",
+        "tmp%0#1",
+        "100"
+      ]
+    },
+    "285": {
+      "op": ">=",
+      "defined_out": [
+        "action#0",
+        "amount#0",
+        "currency#0",
+        "len%0#0",
+        "len%1#0",
+        "len%3#0",
+        "payment_id#0",
+        "signature#0",
+        "timestamp#0",
+        "tmp%1#1"
+      ],
+      "stack_out": [
+        "payment_id#0",
+        "len%0#0",
+        "action#0",
+        "len%1#0",
+        "amount#0",
+        "currency#0",
+        "len%3#0",
+        "timestamp#0",
+        "signature#0",
+        "tmp%1#1"
+      ]
+    },
+    "286": {
+      "error": "insufficient payment amount",
+      "op": "assert // insufficient payment amount",
+      "stack_out": [
+        "payment_id#0",
+        "len%0#0",
+        "action#0",
+        "len%1#0",
+        "amount#0",
+        "currency#0",
+        "len%3#0",
+        "timestamp#0",
+        "signature#0"
+      ]
+    },
+    "287": {
+      "op": "global LatestTimestamp",
+      "defined_out": [
+        "action#0",
+        "amount#0",
+        "currency#0",
+        "len%0#0",
+        "len%1#0",
+        "len%3#0",
+        "payment_id#0",
+        "signature#0",
+        "timestamp#0",
+        "tmp%2#1"
+      ],
+      "stack_out": [
+        "payment_id#0",
+        "len%0#0",
+        "action#0",
+        "len%1#0",
+        "amount#0",
+        "currency#0",
+        "len%3#0",
+        "timestamp#0",
+        "signature#0",
+        "tmp%2#1"
+      ]
+    },
+    "289": {
+      "op": "pushint 15",
+      "defined_out": [
+        "15",
+        "action#0",
+        "amount#0",
+        "currency#0",
+        "len%0#0",
+        "len%1#0",
+        "len%3#0",
+        "payment_id#0",
+        "signature#0",
+        "timestamp#0",
+        "tmp%2#1"
+      ],
+      "stack_out": [
+        "payment_id#0",
+        "len%0#0",
+        "action#0",
+        "len%1#0",
+        "amount#0",
+        "currency#0",
+        "len%3#0",
+        "timestamp#0",
+        "signature#0",
+        "tmp%2#1",
+        "15"
+      ]
+    },
+    "291": {
+      "op": "+",
+      "defined_out": [
+        "action#0",
+        "amount#0",
+        "currency#0",
+        "len%0#0",
+        "len%1#0",
+        "len%3#0",
+        "payment_id#0",
+        "signature#0",
+        "timestamp#0",
+        "tmp%3#1"
+      ],
+      "stack_out": [
+        "payment_id#0",
+        "len%0#0",
+        "action#0",
+        "len%1#0",
+        "amount#0",
+        "currency#0",
+        "len%3#0",
+        "timestamp#0",
+        "signature#0",
+        "tmp%3#1"
+      ]
+    },
+    "292": {
+      "op": "dig 2",
+      "stack_out": [
+        "payment_id#0",
+        "len%0#0",
+        "action#0",
+        "len%1#0",
+        "amount#0",
+        "currency#0",
+        "len%3#0",
+        "timestamp#0",
+        "signature#0",
+        "tmp%3#1",
+        "timestamp#0 (copy)"
+      ]
+    },
+    "294": {
+      "op": "btoi",
+      "defined_out": [
+        "action#0",
+        "amount#0",
+        "currency#0",
+        "len%0#0",
+        "len%1#0",
+        "len%3#0",
+        "payment_id#0",
+        "signature#0",
+        "timestamp#0",
+        "tmp%3#1",
+        "tmp%4#1"
+      ],
+      "stack_out": [
+        "payment_id#0",
+        "len%0#0",
+        "action#0",
+        "len%1#0",
+        "amount#0",
+        "currency#0",
+        "len%3#0",
+        "timestamp#0",
+        "signature#0",
+        "tmp%3#1",
+        "tmp%4#1"
+      ]
+    },
+    "295": {
+      "op": "swap",
+      "stack_out": [
+        "payment_id#0",
+        "len%0#0",
+        "action#0",
+        "len%1#0",
+        "amount#0",
+        "currency#0",
+        "len%3#0",
+        "timestamp#0",
+        "signature#0",
+        "tmp%4#1",
+        "tmp%3#1"
+      ]
+    },
+    "296": {
+      "op": "dig 1",
+      "defined_out": [
+        "action#0",
+        "amount#0",
+        "currency#0",
+        "len%0#0",
+        "len%1#0",
+        "len%3#0",
+        "payment_id#0",
+        "signature#0",
+        "timestamp#0",
+        "tmp%3#1",
+        "tmp%4#1",
+        "tmp%4#1 (copy)"
+      ],
+      "stack_out": [
+        "payment_id#0",
+        "len%0#0",
+        "action#0",
+        "len%1#0",
+        "amount#0",
+        "currency#0",
+        "len%3#0",
+        "timestamp#0",
+        "signature#0",
+        "tmp%4#1",
+        "tmp%3#1",
+        "tmp%4#1 (copy)"
+      ]
+    },
+    "298": {
+      "op": ">=",
+      "defined_out": [
+        "action#0",
+        "amount#0",
+        "currency#0",
+        "len%0#0",
+        "len%1#0",
+        "len%3#0",
+        "payment_id#0",
+        "signature#0",
+        "timestamp#0",
+        "tmp%4#1",
+        "tmp%5#1"
+      ],
+      "stack_out": [
+        "payment_id#0",
+        "len%0#0",
+        "action#0",
+        "len%1#0",
+        "amount#0",
+        "currency#0",
+        "len%3#0",
+        "timestamp#0",
+        "signature#0",
+        "tmp%4#1",
+        "tmp%5#1"
+      ]
+    },
+    "299": {
+      "error": "timestamp in future",
+      "op": "assert // timestamp in future",
+      "stack_out": [
+        "payment_id#0",
+        "len%0#0",
+        "action#0",
+        "len%1#0",
+        "amount#0",
+        "currency#0",
+        "len%3#0",
+        "timestamp#0",
+        "signature#0",
+        "tmp%4#1"
+      ]
+    },
+    "300": {
+      "op": "global LatestTimestamp",
+      "defined_out": [
+        "action#0",
+        "amount#0",
+        "currency#0",
+        "len%0#0",
+        "len%1#0",
+        "len%3#0",
+        "payment_id#0",
+        "signature#0",
+        "timestamp#0",
+        "tmp%4#1",
+        "tmp%6#1"
+      ],
+      "stack_out": [
+        "payment_id#0",
+        "len%0#0",
+        "action#0",
+        "len%1#0",
+        "amount#0",
+        "currency#0",
+        "len%3#0",
+        "timestamp#0",
+        "signature#0",
+        "tmp%4#1",
+        "tmp%6#1"
+      ]
+    },
+    "302": {
+      "op": "swap",
+      "stack_out": [
+        "payment_id#0",
+        "len%0#0",
+        "action#0",
+        "len%1#0",
+        "amount#0",
+        "currency#0",
+        "len%3#0",
+        "timestamp#0",
+        "signature#0",
+        "tmp%6#1",
+        "tmp%4#1"
+      ]
+    },
+    "303": {
+      "op": "-",
+      "defined_out": [
+        "action#0",
+        "amount#0",
+        "currency#0",
+        "len%0#0",
+        "len%1#0",
+        "len%3#0",
+        "payment_id#0",
+        "signature#0",
+        "timestamp#0",
+        "tmp%8#0"
+      ],
+      "stack_out": [
+        "payment_id#0",
+        "len%0#0",
+        "action#0",
+        "len%1#0",
+        "amount#0",
+        "currency#0",
+        "len%3#0",
+        "timestamp#0",
+        "signature#0",
+        "tmp%8#0"
+      ]
+    },
+    "304": {
+      "op": "pushint 300",
+      "defined_out": [
+        "300",
+        "action#0",
+        "amount#0",
+        "currency#0",
+        "len%0#0",
+        "len%1#0",
+        "len%3#0",
+        "payment_id#0",
+        "signature#0",
+        "timestamp#0",
+        "tmp%8#0"
+      ],
+      "stack_out": [
+        "payment_id#0",
+        "len%0#0",
+        "action#0",
+        "len%1#0",
+        "amount#0",
+        "currency#0",
+        "len%3#0",
+        "timestamp#0",
+        "signature#0",
+        "tmp%8#0",
+        "300"
+      ]
+    },
+    "307": {
+      "op": "<",
+      "defined_out": [
+        "action#0",
+        "amount#0",
+        "currency#0",
+        "len%0#0",
+        "len%1#0",
+        "len%3#0",
+        "payment_id#0",
+        "signature#0",
+        "timestamp#0",
+        "tmp%9#0"
+      ],
+      "stack_out": [
+        "payment_id#0",
+        "len%0#0",
+        "action#0",
+        "len%1#0",
+        "amount#0",
+        "currency#0",
+        "len%3#0",
+        "timestamp#0",
+        "signature#0",
+        "tmp%9#0"
+      ]
+    },
+    "308": {
+      "error": "proof expired",
+      "op": "assert // proof expired",
+      "stack_out": [
+        "payment_id#0",
+        "len%0#0",
+        "action#0",
+        "len%1#0",
+        "amount#0",
+        "currency#0",
+        "len%3#0",
+        "timestamp#0",
+        "signature#0"
+      ]
+    },
+    "309": {
+      "op": "dig 8",
+      "stack_out": [
+        "payment_id#0",
+        "len%0#0",
+        "action#0",
+        "len%1#0",
+        "amount#0",
+        "currency#0",
+        "len%3#0",
+        "timestamp#0",
+        "signature#0",
+        "payment_id#0 (copy)"
+      ]
+    },
+    "311": {
+      "op": "extract 2 0",
+      "defined_out": [
+        "action#0",
+        "amount#0",
+        "box_key#0",
+        "currency#0",
+        "len%0#0",
+        "len%1#0",
+        "len%3#0",
+        "payment_id#0",
+        "signature#0",
+        "timestamp#0"
+      ],
+      "stack_out": [
+        "payment_id#0",
+        "len%0#0",
+        "action#0",
+        "len%1#0",
+        "amount#0",
+        "currency#0",
+        "len%3#0",
+        "timestamp#0",
+        "signature#0",
+        "box_key#0"
+      ]
+    },
+    "314": {
+      "op": "pushbytes 0x4d58416c676f5061793a76313a",
+      "defined_out": [
+        "0x4d58416c676f5061793a76313a",
+        "action#0",
+        "amount#0",
+        "box_key#0",
+        "currency#0",
+        "len%0#0",
+        "len%1#0",
+        "len%3#0",
+        "payment_id#0",
+        "signature#0",
+        "timestamp#0"
+      ],
+      "stack_out": [
+        "payment_id#0",
+        "len%0#0",
+        "action#0",
+        "len%1#0",
+        "amount#0",
+        "currency#0",
+        "len%3#0",
+        "timestamp#0",
+        "signature#0",
+        "box_key#0",
+        "0x4d58416c676f5061793a76313a"
+      ]
+    },
+    "329": {
+      "op": "dig 1",
+      "defined_out": [
+        "0x4d58416c676f5061793a76313a",
+        "action#0",
+        "amount#0",
+        "box_key#0",
+        "box_key#0 (copy)",
+        "currency#0",
+        "len%0#0",
+        "len%1#0",
+        "len%3#0",
+        "payment_id#0",
+        "signature#0",
+        "timestamp#0"
+      ],
+      "stack_out": [
+        "payment_id#0",
+        "len%0#0",
+        "action#0",
+        "len%1#0",
+        "amount#0",
+        "currency#0",
+        "len%3#0",
+        "timestamp#0",
+        "signature#0",
+        "box_key#0",
+        "0x4d58416c676f5061793a76313a",
+        "box_key#0 (copy)"
+      ]
+    },
+    "331": {
+      "op": "concat",
+      "defined_out": [
+        "action#0",
+        "amount#0",
+        "box_key#0",
+        "currency#0",
+        "len%0#0",
+        "len%1#0",
+        "len%3#0",
+        "payment_id#0",
+        "signature#0",
+        "timestamp#0",
+        "tmp%12#0"
+      ],
+      "stack_out": [
+        "payment_id#0",
+        "len%0#0",
+        "action#0",
+        "len%1#0",
+        "amount#0",
+        "currency#0",
+        "len%3#0",
+        "timestamp#0",
+        "signature#0",
+        "box_key#0",
+        "tmp%12#0"
+      ]
+    },
+    "332": {
+      "op": "dig 8",
+      "stack_out": [
+        "payment_id#0",
+        "len%0#0",
+        "action#0",
+        "len%1#0",
+        "amount#0",
+        "currency#0",
+        "len%3#0",
+        "timestamp#0",
+        "signature#0",
+        "box_key#0",
+        "tmp%12#0",
+        "action#0 (copy)"
+      ]
+    },
+    "334": {
+      "op": "extract 2 0",
+      "defined_out": [
+        "action#0",
+        "amount#0",
+        "box_key#0",
+        "currency#0",
+        "len%0#0",
+        "len%1#0",
+        "len%3#0",
+        "payment_id#0",
+        "signature#0",
+        "timestamp#0",
+        "tmp%12#0",
+        "tmp%13#0"
+      ],
+      "stack_out": [
+        "payment_id#0",
+        "len%0#0",
+        "action#0",
+        "len%1#0",
+        "amount#0",
+        "currency#0",
+        "len%3#0",
+        "timestamp#0",
+        "signature#0",
+        "box_key#0",
+        "tmp%12#0",
+        "tmp%13#0"
+      ]
+    },
+    "337": {
+      "op": "concat",
+      "defined_out": [
+        "action#0",
+        "amount#0",
+        "box_key#0",
+        "currency#0",
+        "len%0#0",
+        "len%1#0",
+        "len%3#0",
+        "payment_id#0",
+        "signature#0",
+        "timestamp#0",
+        "tmp%14#0"
+      ],
+      "stack_out": [
+        "payment_id#0",
+        "len%0#0",
+        "action#0",
+        "len%1#0",
+        "amount#0",
+        "currency#0",
+        "len%3#0",
+        "timestamp#0",
+        "signature#0",
+        "box_key#0",
+        "tmp%14#0"
+      ]
+    },
+    "338": {
+      "op": "dig 5",
+      "stack_out": [
+        "payment_id#0",
+        "len%0#0",
+        "action#0",
+        "len%1#0",
+        "amount#0",
+        "currency#0",
+        "len%3#0",
+        "timestamp#0",
+        "signature#0",
+        "box_key#0",
+        "tmp%14#0",
+        "currency#0 (copy)"
+      ]
+    },
+    "340": {
+      "op": "extract 2 0",
+      "defined_out": [
+        "action#0",
+        "amount#0",
+        "box_key#0",
+        "currency#0",
+        "len%0#0",
+        "len%1#0",
+        "len%3#0",
+        "payment_id#0",
+        "signature#0",
+        "timestamp#0",
+        "tmp%14#0",
+        "tmp%15#0"
+      ],
+      "stack_out": [
+        "payment_id#0",
+        "len%0#0",
+        "action#0",
+        "len%1#0",
+        "amount#0",
+        "currency#0",
+        "len%3#0",
+        "timestamp#0",
+        "signature#0",
+        "box_key#0",
+        "tmp%14#0",
+        "tmp%15#0"
+      ]
+    },
+    "343": {
+      "op": "concat",
+      "defined_out": [
+        "action#0",
+        "amount#0",
+        "box_key#0",
+        "currency#0",
+        "len%0#0",
+        "len%1#0",
+        "len%3#0",
+        "payment_id#0",
+        "signature#0",
+        "timestamp#0",
+        "tmp%16#0"
+      ],
+      "stack_out": [
+        "payment_id#0",
+        "len%0#0",
+        "action#0",
+        "len%1#0",
+        "amount#0",
+        "currency#0",
+        "len%3#0",
+        "timestamp#0",
+        "signature#0",
+        "box_key#0",
+        "tmp%16#0"
+      ]
+    },
+    "344": {
+      "op": "dig 6",
+      "stack_out": [
+        "payment_id#0",
+        "len%0#0",
+        "action#0",
+        "len%1#0",
+        "amount#0",
+        "currency#0",
+        "len%3#0",
+        "timestamp#0",
+        "signature#0",
+        "box_key#0",
+        "tmp%16#0",
+        "amount#0 (copy)"
+      ]
+    },
+    "346": {
+      "op": "concat",
+      "defined_out": [
+        "action#0",
+        "amount#0",
+        "box_key#0",
+        "currency#0",
+        "len%0#0",
+        "len%1#0",
+        "len%3#0",
+        "payment_id#0",
+        "signature#0",
+        "timestamp#0",
+        "tmp%17#0"
+      ],
+      "stack_out": [
+        "payment_id#0",
+        "len%0#0",
+        "action#0",
+        "len%1#0",
+        "amount#0",
+        "currency#0",
+        "len%3#0",
+        "timestamp#0",
+        "signature#0",
+        "box_key#0",
+        "tmp%17#0"
+      ]
+    },
+    "347": {
+      "op": "dig 3",
+      "stack_out": [
+        "payment_id#0",
+        "len%0#0",
+        "action#0",
+        "len%1#0",
+        "amount#0",
+        "currency#0",
+        "len%3#0",
+        "timestamp#0",
+        "signature#0",
+        "box_key#0",
+        "tmp%17#0",
+        "timestamp#0 (copy)"
+      ]
+    },
+    "349": {
+      "op": "concat",
+      "defined_out": [
+        "action#0",
+        "amount#0",
+        "box_key#0",
+        "currency#0",
+        "len%0#0",
+        "len%1#0",
+        "len%3#0",
+        "message#0",
+        "payment_id#0",
+        "signature#0",
+        "timestamp#0"
+      ],
+      "stack_out": [
+        "payment_id#0",
+        "len%0#0",
+        "action#0",
+        "len%1#0",
+        "amount#0",
+        "currency#0",
+        "len%3#0",
+        "timestamp#0",
+        "signature#0",
+        "box_key#0",
+        "message#0"
+      ]
+    },
+    "350": {
+      "op": "uncover 2",
+      "stack_out": [
+        "payment_id#0",
+        "len%0#0",
+        "action#0",
+        "len%1#0",
+        "amount#0",
+        "currency#0",
+        "len%3#0",
+        "timestamp#0",
+        "box_key#0",
+        "message#0",
+        "signature#0"
+      ]
+    },
+    "352": {
+      "op": "extract 2 0",
+      "defined_out": [
+        "action#0",
+        "amount#0",
+        "box_key#0",
+        "currency#0",
+        "len%0#0",
+        "len%1#0",
+        "len%3#0",
+        "message#0",
+        "payment_id#0",
+        "timestamp#0",
+        "tmp%19#0"
+      ],
+      "stack_out": [
+        "payment_id#0",
+        "len%0#0",
+        "action#0",
+        "len%1#0",
+        "amount#0",
+        "currency#0",
+        "len%3#0",
+        "timestamp#0",
+        "box_key#0",
+        "message#0",
+        "tmp%19#0"
+      ]
+    },
+    "355": {
+      "op": "intc_0 // 0",
+      "stack_out": [
+        "payment_id#0",
+        "len%0#0",
+        "action#0",
+        "len%1#0",
+        "amount#0",
+        "currency#0",
+        "len%3#0",
+        "timestamp#0",
+        "box_key#0",
+        "message#0",
+        "tmp%19#0",
+        "0"
+      ]
+    },
+    "356": {
+      "op": "bytec_1 // \"oracle_pubkey\"",
+      "defined_out": [
+        "\"oracle_pubkey\"",
+        "0",
+        "action#0",
+        "amount#0",
+        "box_key#0",
+        "currency#0",
+        "len%0#0",
+        "len%1#0",
+        "len%3#0",
+        "message#0",
+        "payment_id#0",
+        "timestamp#0",
+        "tmp%19#0"
+      ],
+      "stack_out": [
+        "payment_id#0",
+        "len%0#0",
+        "action#0",
+        "len%1#0",
+        "amount#0",
+        "currency#0",
+        "len%3#0",
+        "timestamp#0",
+        "box_key#0",
+        "message#0",
+        "tmp%19#0",
+        "0",
+        "\"oracle_pubkey\""
+      ]
+    },
+    "357": {
+      "op": "app_global_get_ex",
+      "defined_out": [
+        "action#0",
+        "amount#0",
+        "box_key#0",
+        "currency#0",
+        "len%0#0",
+        "len%1#0",
+        "len%3#0",
+        "maybe_exists%0#0",
+        "maybe_value%0#0",
+        "message#0",
+        "payment_id#0",
+        "timestamp#0",
+        "tmp%19#0"
+      ],
+      "stack_out": [
+        "payment_id#0",
+        "len%0#0",
+        "action#0",
+        "len%1#0",
+        "amount#0",
+        "currency#0",
+        "len%3#0",
+        "timestamp#0",
+        "box_key#0",
+        "message#0",
+        "tmp%19#0",
+        "maybe_value%0#0",
+        "maybe_exists%0#0"
+      ]
+    },
+    "358": {
+      "error": "check self.oracle_pubkey exists",
+      "op": "assert // check self.oracle_pubkey exists",
+      "stack_out": [
+        "payment_id#0",
+        "len%0#0",
+        "action#0",
+        "len%1#0",
+        "amount#0",
+        "currency#0",
+        "len%3#0",
+        "timestamp#0",
+        "box_key#0",
+        "message#0",
+        "tmp%19#0",
+        "maybe_value%0#0"
+      ]
+    },
+    "359": {
+      "op": "ed25519verify_bare",
+      "defined_out": [
+        "action#0",
+        "amount#0",
+        "box_key#0",
+        "currency#0",
+        "len%0#0",
+        "len%1#0",
+        "len%3#0",
+        "payment_id#0",
+        "sig_valid#0",
+        "timestamp#0"
+      ],
+      "stack_out": [
+        "payment_id#0",
+        "len%0#0",
+        "action#0",
+        "len%1#0",
+        "amount#0",
+        "currency#0",
+        "len%3#0",
+        "timestamp#0",
+        "box_key#0",
+        "sig_valid#0"
+      ]
+    },
+    "360": {
+      "error": "invalid oracle signature",
+      "op": "assert // invalid oracle signature",
+      "stack_out": [
+        "payment_id#0",
+        "len%0#0",
+        "action#0",
+        "len%1#0",
+        "amount#0",
+        "currency#0",
+        "len%3#0",
+        "timestamp#0",
+        "box_key#0"
+      ]
+    },
+    "361": {
+      "op": "dup",
+      "stack_out": [
+        "payment_id#0",
+        "len%0#0",
+        "action#0",
+        "len%1#0",
+        "amount#0",
+        "currency#0",
+        "len%3#0",
+        "timestamp#0",
+        "box_key#0",
+        "box_key#0 (copy)"
+      ]
+    },
+    "362": {
+      "op": "box_len",
+      "defined_out": [
+        "action#0",
+        "amount#0",
+        "box_exists#0",
+        "box_key#0",
+        "box_val#0",
+        "currency#0",
+        "len%0#0",
+        "len%1#0",
+        "len%3#0",
+        "payment_id#0",
+        "timestamp#0"
+      ],
+      "stack_out": [
+        "payment_id#0",
+        "len%0#0",
+        "action#0",
+        "len%1#0",
+        "amount#0",
+        "currency#0",
+        "len%3#0",
+        "timestamp#0",
+        "box_key#0",
+        "box_val#0",
+        "box_exists#0"
+      ]
+    },
+    "363": {
+      "op": "bury 1",
+      "stack_out": [
+        "payment_id#0",
+        "len%0#0",
+        "action#0",
+        "len%1#0",
+        "amount#0",
+        "currency#0",
+        "len%3#0",
+        "timestamp#0",
+        "box_key#0",
+        "box_exists#0"
+      ]
+    },
+    "365": {
+      "op": "!",
+      "defined_out": [
+        "action#0",
+        "amount#0",
+        "box_key#0",
+        "currency#0",
+        "len%0#0",
+        "len%1#0",
+        "len%3#0",
+        "payment_id#0",
+        "timestamp#0",
+        "tmp%24#0"
+      ],
+      "stack_out": [
+        "payment_id#0",
+        "len%0#0",
+        "action#0",
+        "len%1#0",
+        "amount#0",
+        "currency#0",
+        "len%3#0",
+        "timestamp#0",
+        "box_key#0",
+        "tmp%24#0"
+      ]
+    },
+    "366": {
+      "error": "payment already processed",
+      "op": "assert // payment already processed",
+      "stack_out": [
+        "payment_id#0",
+        "len%0#0",
+        "action#0",
+        "len%1#0",
+        "amount#0",
+        "currency#0",
+        "len%3#0",
+        "timestamp#0",
+        "box_key#0"
+      ]
+    },
+    "367": {
+      "op": "pushbytes 0x31",
+      "defined_out": [
+        "0x31",
+        "action#0",
+        "amount#0",
+        "box_key#0",
+        "currency#0",
+        "len%0#0",
+        "len%1#0",
+        "len%3#0",
+        "payment_id#0",
+        "timestamp#0"
+      ],
+      "stack_out": [
+        "payment_id#0",
+        "len%0#0",
+        "action#0",
+        "len%1#0",
+        "amount#0",
+        "currency#0",
+        "len%3#0",
+        "timestamp#0",
+        "box_key#0",
+        "0x31"
+      ]
+    },
+    "370": {
+      "op": "box_put",
+      "stack_out": [
+        "payment_id#0",
+        "len%0#0",
+        "action#0",
+        "len%1#0",
+        "amount#0",
+        "currency#0",
+        "len%3#0",
+        "timestamp#0"
+      ]
+    },
+    "371": {
+      "op": "intc_0 // 0",
+      "stack_out": [
+        "payment_id#0",
+        "len%0#0",
+        "action#0",
+        "len%1#0",
+        "amount#0",
+        "currency#0",
+        "len%3#0",
+        "timestamp#0",
+        "0"
+      ]
+    },
+    "372": {
+      "op": "bytec_0 // \"total_verified\"",
+      "defined_out": [
+        "\"total_verified\"",
+        "0",
+        "action#0",
+        "amount#0",
+        "currency#0",
+        "len%0#0",
+        "len%1#0",
+        "len%3#0",
+        "payment_id#0",
+        "timestamp#0"
+      ],
+      "stack_out": [
+        "payment_id#0",
+        "len%0#0",
+        "action#0",
+        "len%1#0",
+        "amount#0",
+        "currency#0",
+        "len%3#0",
+        "timestamp#0",
+        "0",
+        "\"total_verified\""
+      ]
+    },
+    "373": {
+      "op": "app_global_get_ex",
+      "defined_out": [
+        "action#0",
+        "amount#0",
+        "currency#0",
+        "len%0#0",
+        "len%1#0",
+        "len%3#0",
+        "maybe_exists%1#0",
+        "maybe_value%1#0",
+        "payment_id#0",
+        "timestamp#0"
+      ],
+      "stack_out": [
+        "payment_id#0",
+        "len%0#0",
+        "action#0",
+        "len%1#0",
+        "amount#0",
+        "currency#0",
+        "len%3#0",
+        "timestamp#0",
+        "maybe_value%1#0",
+        "maybe_exists%1#0"
+      ]
+    },
+    "374": {
+      "error": "check self.total_verified exists",
+      "op": "assert // check self.total_verified exists",
+      "stack_out": [
+        "payment_id#0",
+        "len%0#0",
+        "action#0",
+        "len%1#0",
+        "amount#0",
+        "currency#0",
+        "len%3#0",
+        "timestamp#0",
+        "maybe_value%1#0"
+      ]
+    },
+    "375": {
+      "op": "intc_1 // 1",
+      "defined_out": [
+        "1",
+        "action#0",
+        "amount#0",
+        "currency#0",
+        "len%0#0",
+        "len%1#0",
+        "len%3#0",
+        "maybe_value%1#0",
+        "payment_id#0",
+        "timestamp#0"
+      ],
+      "stack_out": [
+        "payment_id#0",
+        "len%0#0",
+        "action#0",
+        "len%1#0",
+        "amount#0",
+        "currency#0",
+        "len%3#0",
+        "timestamp#0",
+        "maybe_value%1#0",
+        "1"
+      ]
+    },
+    "376": {
+      "op": "+",
+      "defined_out": [
+        "action#0",
+        "amount#0",
+        "currency#0",
+        "len%0#0",
+        "len%1#0",
+        "len%3#0",
+        "payment_id#0",
+        "timestamp#0",
+        "tmp%25#0"
+      ],
+      "stack_out": [
+        "payment_id#0",
+        "len%0#0",
+        "action#0",
+        "len%1#0",
+        "amount#0",
+        "currency#0",
+        "len%3#0",
+        "timestamp#0",
+        "tmp%25#0"
+      ]
+    },
+    "377": {
+      "op": "bytec_0 // \"total_verified\"",
+      "stack_out": [
+        "payment_id#0",
+        "len%0#0",
+        "action#0",
+        "len%1#0",
+        "amount#0",
+        "currency#0",
+        "len%3#0",
+        "timestamp#0",
+        "tmp%25#0",
+        "\"total_verified\""
+      ]
+    },
+    "378": {
+      "op": "swap",
+      "stack_out": [
+        "payment_id#0",
+        "len%0#0",
+        "action#0",
+        "len%1#0",
+        "amount#0",
+        "currency#0",
+        "len%3#0",
+        "timestamp#0",
+        "\"total_verified\"",
+        "tmp%25#0"
+      ]
+    },
+    "379": {
+      "op": "app_global_put",
+      "stack_out": [
+        "payment_id#0",
+        "len%0#0",
+        "action#0",
+        "len%1#0",
+        "amount#0",
+        "currency#0",
+        "len%3#0",
+        "timestamp#0"
+      ]
+    },
+    "380": {
+      "op": "intc_0 // 0",
+      "stack_out": [
+        "payment_id#0",
+        "len%0#0",
+        "action#0",
+        "len%1#0",
+        "amount#0",
+        "currency#0",
+        "len%3#0",
+        "timestamp#0",
+        "0"
+      ]
+    },
+    "381": {
+      "op": "bytec_2 // \"oracle_address\"",
+      "defined_out": [
+        "\"oracle_address\"",
+        "0",
+        "action#0",
+        "amount#0",
+        "currency#0",
+        "len%0#0",
+        "len%1#0",
+        "len%3#0",
+        "payment_id#0",
+        "timestamp#0"
+      ],
+      "stack_out": [
+        "payment_id#0",
+        "len%0#0",
+        "action#0",
+        "len%1#0",
+        "amount#0",
+        "currency#0",
+        "len%3#0",
+        "timestamp#0",
+        "0",
+        "\"oracle_address\""
+      ]
+    },
+    "382": {
+      "op": "app_global_get_ex",
+      "defined_out": [
+        "action#0",
+        "amount#0",
+        "currency#0",
+        "len%0#0",
+        "len%1#0",
+        "len%3#0",
+        "maybe_exists%2#0",
+        "maybe_value%2#0",
+        "payment_id#0",
+        "timestamp#0"
+      ],
+      "stack_out": [
+        "payment_id#0",
+        "len%0#0",
+        "action#0",
+        "len%1#0",
+        "amount#0",
+        "currency#0",
+        "len%3#0",
+        "timestamp#0",
+        "maybe_value%2#0",
+        "maybe_exists%2#0"
+      ]
+    },
+    "383": {
+      "error": "check self.oracle_address exists",
+      "op": "assert // check self.oracle_address exists",
+      "stack_out": [
+        "payment_id#0",
+        "len%0#0",
+        "action#0",
+        "len%1#0",
+        "amount#0",
+        "currency#0",
+        "len%3#0",
+        "timestamp#0",
+        "maybe_value%2#0"
+      ]
+    },
+    "384": {
+      "op": "pushint 24",
+      "defined_out": [
+        "24",
+        "action#0",
+        "amount#0",
+        "currency#0",
+        "len%0#0",
+        "len%1#0",
+        "len%3#0",
+        "maybe_value%2#0",
+        "payment_id#0",
+        "timestamp#0"
+      ],
+      "stack_out": [
+        "payment_id#0",
+        "len%0#0",
+        "action#0",
+        "len%1#0",
+        "amount#0",
+        "currency#0",
+        "len%3#0",
+        "timestamp#0",
+        "maybe_value%2#0",
+        "24"
+      ]
+    },
+    "386": {
+      "op": "uncover 8",
+      "stack_out": [
+        "payment_id#0",
+        "action#0",
+        "len%1#0",
+        "amount#0",
+        "currency#0",
+        "len%3#0",
+        "timestamp#0",
+        "maybe_value%2#0",
+        "24",
+        "len%0#0"
+      ]
+    },
+    "388": {
+      "op": "+",
+      "defined_out": [
+        "action#0",
+        "aggregate%current_tail_offset%0#0",
+        "amount#0",
+        "currency#0",
+        "len%1#0",
+        "len%3#0",
+        "maybe_value%2#0",
+        "payment_id#0",
+        "timestamp#0"
+      ],
+      "stack_out": [
+        "payment_id#0",
+        "action#0",
+        "len%1#0",
+        "amount#0",
+        "currency#0",
+        "len%3#0",
+        "timestamp#0",
+        "maybe_value%2#0",
+        "aggregate%current_tail_offset%0#0"
+      ]
+    },
+    "389": {
+      "op": "dup",
+      "defined_out": [
+        "action#0",
+        "aggregate%current_tail_offset%0#0",
+        "aggregate%current_tail_offset%0#0 (copy)",
+        "amount#0",
+        "currency#0",
+        "len%1#0",
+        "len%3#0",
+        "maybe_value%2#0",
+        "payment_id#0",
+        "timestamp#0"
+      ],
+      "stack_out": [
+        "payment_id#0",
+        "action#0",
+        "len%1#0",
+        "amount#0",
+        "currency#0",
+        "len%3#0",
+        "timestamp#0",
+        "maybe_value%2#0",
+        "aggregate%current_tail_offset%0#0",
+        "aggregate%current_tail_offset%0#0 (copy)"
+      ]
+    },
+    "390": {
+      "op": "itob",
+      "defined_out": [
+        "action#0",
+        "aggregate%as_bytes%1#0",
+        "aggregate%current_tail_offset%0#0",
+        "amount#0",
+        "currency#0",
+        "len%1#0",
+        "len%3#0",
+        "maybe_value%2#0",
+        "payment_id#0",
+        "timestamp#0"
+      ],
+      "stack_out": [
+        "payment_id#0",
+        "action#0",
+        "len%1#0",
+        "amount#0",
+        "currency#0",
+        "len%3#0",
+        "timestamp#0",
+        "maybe_value%2#0",
+        "aggregate%current_tail_offset%0#0",
+        "aggregate%as_bytes%1#0"
+      ]
+    },
+    "391": {
+      "op": "extract 6 2",
+      "defined_out": [
+        "action#0",
+        "aggregate%current_tail_offset%0#0",
+        "aggregate%offset_as_uint16%1#0",
+        "amount#0",
+        "currency#0",
+        "len%1#0",
+        "len%3#0",
+        "maybe_value%2#0",
+        "payment_id#0",
+        "timestamp#0"
+      ],
+      "stack_out": [
+        "payment_id#0",
+        "action#0",
+        "len%1#0",
+        "amount#0",
+        "currency#0",
+        "len%3#0",
+        "timestamp#0",
+        "maybe_value%2#0",
+        "aggregate%current_tail_offset%0#0",
+        "aggregate%offset_as_uint16%1#0"
+      ]
+    },
+    "394": {
+      "op": "pushbytes 0x0018",
+      "defined_out": [
+        "0x0018",
+        "action#0",
+        "aggregate%current_tail_offset%0#0",
+        "aggregate%offset_as_uint16%1#0",
+        "amount#0",
+        "currency#0",
+        "len%1#0",
+        "len%3#0",
+        "maybe_value%2#0",
+        "payment_id#0",
+        "timestamp#0"
+      ],
+      "stack_out": [
+        "payment_id#0",
+        "action#0",
+        "len%1#0",
+        "amount#0",
+        "currency#0",
+        "len%3#0",
+        "timestamp#0",
+        "maybe_value%2#0",
+        "aggregate%current_tail_offset%0#0",
+        "aggregate%offset_as_uint16%1#0",
+        "0x0018"
+      ]
+    },
+    "398": {
+      "op": "swap",
+      "stack_out": [
+        "payment_id#0",
+        "action#0",
+        "len%1#0",
+        "amount#0",
+        "currency#0",
+        "len%3#0",
+        "timestamp#0",
+        "maybe_value%2#0",
+        "aggregate%current_tail_offset%0#0",
+        "0x0018",
+        "aggregate%offset_as_uint16%1#0"
+      ]
+    },
+    "399": {
+      "op": "concat",
+      "defined_out": [
+        "action#0",
+        "aggregate%current_tail_offset%0#0",
+        "aggregate%head%1#0",
+        "amount#0",
+        "currency#0",
+        "len%1#0",
+        "len%3#0",
+        "maybe_value%2#0",
+        "payment_id#0",
+        "timestamp#0"
+      ],
+      "stack_out": [
+        "payment_id#0",
+        "action#0",
+        "len%1#0",
+        "amount#0",
+        "currency#0",
+        "len%3#0",
+        "timestamp#0",
+        "maybe_value%2#0",
+        "aggregate%current_tail_offset%0#0",
+        "aggregate%head%1#0"
+      ]
+    },
+    "400": {
+      "op": "swap",
+      "stack_out": [
+        "payment_id#0",
+        "action#0",
+        "len%1#0",
+        "amount#0",
+        "currency#0",
+        "len%3#0",
+        "timestamp#0",
+        "maybe_value%2#0",
+        "aggregate%head%1#0",
+        "aggregate%current_tail_offset%0#0"
+      ]
+    },
+    "401": {
+      "op": "uncover 7",
+      "stack_out": [
+        "payment_id#0",
+        "action#0",
+        "amount#0",
+        "currency#0",
+        "len%3#0",
+        "timestamp#0",
+        "maybe_value%2#0",
+        "aggregate%head%1#0",
+        "aggregate%current_tail_offset%0#0",
+        "len%1#0"
+      ]
+    },
+    "403": {
+      "op": "+",
+      "defined_out": [
+        "action#0",
+        "aggregate%current_tail_offset%1#0",
+        "aggregate%head%1#0",
+        "amount#0",
+        "currency#0",
+        "len%3#0",
+        "maybe_value%2#0",
+        "payment_id#0",
+        "timestamp#0"
+      ],
+      "stack_out": [
+        "payment_id#0",
+        "action#0",
+        "amount#0",
+        "currency#0",
+        "len%3#0",
+        "timestamp#0",
+        "maybe_value%2#0",
+        "aggregate%head%1#0",
+        "aggregate%current_tail_offset%1#0"
+      ]
+    },
+    "404": {
+      "op": "swap",
+      "stack_out": [
+        "payment_id#0",
+        "action#0",
+        "amount#0",
+        "currency#0",
+        "len%3#0",
+        "timestamp#0",
+        "maybe_value%2#0",
+        "aggregate%current_tail_offset%1#0",
+        "aggregate%head%1#0"
+      ]
+    },
+    "405": {
+      "op": "uncover 6",
+      "stack_out": [
+        "payment_id#0",
+        "action#0",
+        "currency#0",
+        "len%3#0",
+        "timestamp#0",
+        "maybe_value%2#0",
+        "aggregate%current_tail_offset%1#0",
+        "aggregate%head%1#0",
+        "amount#0"
+      ]
+    },
+    "407": {
+      "op": "concat",
+      "defined_out": [
+        "action#0",
+        "aggregate%current_tail_offset%1#0",
+        "aggregate%head%2#0",
+        "currency#0",
+        "len%3#0",
+        "maybe_value%2#0",
+        "payment_id#0",
+        "timestamp#0"
+      ],
+      "stack_out": [
+        "payment_id#0",
+        "action#0",
+        "currency#0",
+        "len%3#0",
+        "timestamp#0",
+        "maybe_value%2#0",
+        "aggregate%current_tail_offset%1#0",
+        "aggregate%head%2#0"
+      ]
+    },
+    "408": {
+      "op": "dig 1",
+      "defined_out": [
+        "action#0",
+        "aggregate%current_tail_offset%1#0",
+        "aggregate%current_tail_offset%1#0 (copy)",
+        "aggregate%head%2#0",
+        "currency#0",
+        "len%3#0",
+        "maybe_value%2#0",
+        "payment_id#0",
+        "timestamp#0"
+      ],
+      "stack_out": [
+        "payment_id#0",
+        "action#0",
+        "currency#0",
+        "len%3#0",
+        "timestamp#0",
+        "maybe_value%2#0",
+        "aggregate%current_tail_offset%1#0",
+        "aggregate%head%2#0",
+        "aggregate%current_tail_offset%1#0 (copy)"
+      ]
+    },
+    "410": {
+      "op": "itob",
+      "defined_out": [
+        "action#0",
+        "aggregate%as_bytes%2#0",
+        "aggregate%current_tail_offset%1#0",
+        "aggregate%head%2#0",
+        "currency#0",
+        "len%3#0",
+        "maybe_value%2#0",
+        "payment_id#0",
+        "timestamp#0"
+      ],
+      "stack_out": [
+        "payment_id#0",
+        "action#0",
+        "currency#0",
+        "len%3#0",
+        "timestamp#0",
+        "maybe_value%2#0",
+        "aggregate%current_tail_offset%1#0",
+        "aggregate%head%2#0",
+        "aggregate%as_bytes%2#0"
+      ]
+    },
+    "411": {
+      "op": "extract 6 2",
+      "defined_out": [
+        "action#0",
+        "aggregate%current_tail_offset%1#0",
+        "aggregate%head%2#0",
+        "aggregate%offset_as_uint16%2#0",
+        "currency#0",
+        "len%3#0",
+        "maybe_value%2#0",
+        "payment_id#0",
+        "timestamp#0"
+      ],
+      "stack_out": [
+        "payment_id#0",
+        "action#0",
+        "currency#0",
+        "len%3#0",
+        "timestamp#0",
+        "maybe_value%2#0",
+        "aggregate%current_tail_offset%1#0",
+        "aggregate%head%2#0",
+        "aggregate%offset_as_uint16%2#0"
+      ]
+    },
+    "414": {
+      "op": "concat",
+      "defined_out": [
+        "action#0",
+        "aggregate%current_tail_offset%1#0",
+        "aggregate%head%3#0",
+        "currency#0",
+        "len%3#0",
+        "maybe_value%2#0",
+        "payment_id#0",
+        "timestamp#0"
+      ],
+      "stack_out": [
+        "payment_id#0",
+        "action#0",
+        "currency#0",
+        "len%3#0",
+        "timestamp#0",
+        "maybe_value%2#0",
+        "aggregate%current_tail_offset%1#0",
+        "aggregate%head%3#0"
+      ]
+    },
+    "415": {
+      "op": "swap",
+      "stack_out": [
+        "payment_id#0",
+        "action#0",
+        "currency#0",
+        "len%3#0",
+        "timestamp#0",
+        "maybe_value%2#0",
+        "aggregate%head%3#0",
+        "aggregate%current_tail_offset%1#0"
+      ]
+    },
+    "416": {
+      "op": "uncover 4",
+      "stack_out": [
+        "payment_id#0",
+        "action#0",
+        "currency#0",
+        "timestamp#0",
+        "maybe_value%2#0",
+        "aggregate%head%3#0",
+        "aggregate%current_tail_offset%1#0",
+        "len%3#0"
+      ]
+    },
+    "418": {
+      "op": "+",
+      "defined_out": [
+        "action#0",
+        "aggregate%current_tail_offset%2#0",
+        "aggregate%head%3#0",
+        "currency#0",
+        "maybe_value%2#0",
+        "payment_id#0",
+        "timestamp#0"
+      ],
+      "stack_out": [
+        "payment_id#0",
+        "action#0",
+        "currency#0",
+        "timestamp#0",
+        "maybe_value%2#0",
+        "aggregate%head%3#0",
+        "aggregate%current_tail_offset%2#0"
+      ]
+    },
+    "419": {
+      "op": "itob",
+      "defined_out": [
+        "action#0",
+        "aggregate%as_bytes%3#0",
+        "aggregate%head%3#0",
+        "currency#0",
+        "maybe_value%2#0",
+        "payment_id#0",
+        "timestamp#0"
+      ],
+      "stack_out": [
+        "payment_id#0",
+        "action#0",
+        "currency#0",
+        "timestamp#0",
+        "maybe_value%2#0",
+        "aggregate%head%3#0",
+        "aggregate%as_bytes%3#0"
+      ]
+    },
+    "420": {
+      "op": "extract 6 2",
+      "defined_out": [
+        "action#0",
+        "aggregate%head%3#0",
+        "aggregate%offset_as_uint16%3#0",
+        "currency#0",
+        "maybe_value%2#0",
+        "payment_id#0",
+        "timestamp#0"
+      ],
+      "stack_out": [
+        "payment_id#0",
+        "action#0",
+        "currency#0",
+        "timestamp#0",
+        "maybe_value%2#0",
+        "aggregate%head%3#0",
+        "aggregate%offset_as_uint16%3#0"
+      ]
+    },
+    "423": {
+      "op": "concat",
+      "defined_out": [
+        "action#0",
+        "aggregate%head%4#0",
+        "currency#0",
+        "maybe_value%2#0",
+        "payment_id#0",
+        "timestamp#0"
+      ],
+      "stack_out": [
+        "payment_id#0",
+        "action#0",
+        "currency#0",
+        "timestamp#0",
+        "maybe_value%2#0",
+        "aggregate%head%4#0"
+      ]
+    },
+    "424": {
+      "op": "uncover 2",
+      "stack_out": [
+        "payment_id#0",
+        "action#0",
+        "currency#0",
+        "maybe_value%2#0",
+        "aggregate%head%4#0",
+        "timestamp#0"
+      ]
+    },
+    "426": {
+      "op": "concat",
+      "defined_out": [
+        "action#0",
+        "aggregate%head%5#0",
+        "currency#0",
+        "maybe_value%2#0",
+        "payment_id#0"
+      ],
+      "stack_out": [
+        "payment_id#0",
+        "action#0",
+        "currency#0",
+        "maybe_value%2#0",
+        "aggregate%head%5#0"
+      ]
+    },
+    "427": {
+      "op": "uncover 4",
+      "stack_out": [
+        "action#0",
+        "currency#0",
+        "maybe_value%2#0",
+        "aggregate%head%5#0",
+        "payment_id#0"
+      ]
+    },
+    "429": {
+      "op": "concat",
+      "defined_out": [
+        "action#0",
+        "aggregate%concat%0#0",
+        "currency#0",
+        "maybe_value%2#0"
+      ],
+      "stack_out": [
+        "action#0",
+        "currency#0",
+        "maybe_value%2#0",
+        "aggregate%concat%0#0"
+      ]
+    },
+    "430": {
+      "op": "uncover 3",
+      "stack_out": [
+        "currency#0",
+        "maybe_value%2#0",
+        "aggregate%concat%0#0",
+        "action#0"
+      ]
+    },
+    "432": {
+      "op": "concat",
+      "defined_out": [
+        "aggregate%concat%1#0",
+        "currency#0",
+        "maybe_value%2#0"
+      ],
+      "stack_out": [
+        "currency#0",
+        "maybe_value%2#0",
+        "aggregate%concat%1#0"
+      ]
+    },
+    "433": {
+      "op": "uncover 2",
+      "stack_out": [
+        "maybe_value%2#0",
+        "aggregate%concat%1#0",
+        "currency#0"
+      ]
+    },
+    "435": {
+      "op": "concat",
+      "defined_out": [
+        "aggregate%concat%2#0",
+        "maybe_value%2#0"
+      ],
+      "stack_out": [
+        "maybe_value%2#0",
+        "aggregate%concat%2#0"
+      ]
+    },
+    "436": {
+      "op": "swap",
+      "stack_out": [
+        "aggregate%concat%2#0",
+        "maybe_value%2#0"
+      ]
+    },
+    "437": {
+      "op": "concat",
+      "defined_out": [
+        "aggregate%concat%3#0"
+      ],
+      "stack_out": [
+        "aggregate%concat%3#0"
+      ]
+    },
+    "438": {
+      "op": "pushbytes 0xd049d7f3 // method \"PaymentVerified(string,string,uint64,string,string,uint64)\"",
+      "defined_out": [
+        "Method(PaymentVerified(string,string,uint64,string,string,uint64))",
+        "aggregate%concat%3#0"
+      ],
+      "stack_out": [
+        "aggregate%concat%3#0",
+        "Method(PaymentVerified(string,string,uint64,string,string,uint64))"
+      ]
+    },
+    "444": {
+      "op": "swap",
+      "stack_out": [
+        "Method(PaymentVerified(string,string,uint64,string,string,uint64))",
+        "aggregate%concat%3#0"
+      ]
+    },
+    "445": {
+      "op": "concat",
+      "defined_out": [
+        "event%0#0"
+      ],
+      "stack_out": [
+        "event%0#0"
+      ]
+    },
+    "446": {
+      "op": "log",
+      "stack_out": []
+    },
+    "447": {
+      "op": "pushbytes 0x151f7c7580",
+      "defined_out": [
+        "0x151f7c7580"
+      ],
+      "stack_out": [
+        "0x151f7c7580"
+      ]
+    },
+    "454": {
+      "op": "log",
+      "stack_out": []
+    },
+    "455": {
+      "op": "intc_1 // 1",
+      "stack_out": [
+        "1"
+      ]
+    },
+    "456": {
+      "op": "return",
+      "stack_out": []
+    },
+    "457": {
+      "subroutine": "AlgoPayOracle.AlgoPayOracle.check_payment[routing]",
+      "params": {},
+      "block": "check_payment",
+      "stack_in": [],
+      "op": "txna ApplicationArgs 1",
+      "defined_out": [
+        "payment_id#0"
+      ],
+      "stack_out": [
+        "payment_id#0"
+      ]
+    },
+    "460": {
+      "op": "dup",
+      "defined_out": [
+        "payment_id#0",
+        "payment_id#0 (copy)"
+      ],
+      "stack_out": [
+        "payment_id#0",
+        "payment_id#0 (copy)"
+      ]
+    },
+    "461": {
+      "op": "intc_0 // 0",
+      "defined_out": [
+        "0",
+        "payment_id#0",
+        "payment_id#0 (copy)"
+      ],
+      "stack_out": [
+        "payment_id#0",
+        "payment_id#0 (copy)",
+        "0"
+      ]
+    },
+    "462": {
+      "error": "invalid array length header",
+      "op": "extract_uint16 // on error: invalid array length header",
+      "defined_out": [
+        "aggregate%array_length%0#0",
+        "payment_id#0"
+      ],
+      "stack_out": [
+        "payment_id#0",
+        "aggregate%array_length%0#0"
+      ]
+    },
+    "463": {
+      "op": "intc_2 // 2",
+      "defined_out": [
+        "2",
+        "aggregate%array_length%0#0",
+        "payment_id#0"
+      ],
+      "stack_out": [
+        "payment_id#0",
+        "aggregate%array_length%0#0",
+        "2"
+      ]
+    },
+    "464": {
+      "op": "+",
+      "defined_out": [
+        "add%0#0",
+        "payment_id#0"
+      ],
+      "stack_out": [
+        "payment_id#0",
+        "add%0#0"
+      ]
+    },
+    "465": {
+      "op": "dig 1",
+      "stack_out": [
+        "payment_id#0",
+        "add%0#0",
+        "payment_id#0 (copy)"
+      ]
+    },
+    "467": {
+      "op": "len",
+      "defined_out": [
+        "add%0#0",
+        "len%0#0",
+        "payment_id#0"
+      ],
+      "stack_out": [
+        "payment_id#0",
+        "add%0#0",
+        "len%0#0"
+      ]
+    },
+    "468": {
+      "op": "==",
+      "defined_out": [
+        "eq%0#0",
+        "payment_id#0"
+      ],
+      "stack_out": [
+        "payment_id#0",
+        "eq%0#0"
+      ]
+    },
+    "469": {
+      "error": "invalid number of bytes for arc4.dynamic_array<arc4.uint8>",
+      "op": "assert // invalid number of bytes for arc4.dynamic_array<arc4.uint8>",
+      "stack_out": [
+        "payment_id#0"
+      ]
+    },
+    "470": {
+      "op": "extract 2 0",
+      "defined_out": [
+        "tmp%0#1"
+      ],
+      "stack_out": [
+        "tmp%0#1"
+      ]
+    },
+    "473": {
+      "op": "box_len",
+      "defined_out": [
+        "box_exists#0",
+        "box_val#0"
+      ],
+      "stack_out": [
+        "box_val#0",
+        "box_exists#0"
+      ]
+    },
+    "474": {
+      "op": "bury 1",
+      "stack_out": [
+        "box_exists#0"
+      ]
+    },
+    "476": {
+      "op": "pushbytes 0x00",
+      "defined_out": [
+        "0x00",
+        "box_exists#0"
+      ],
+      "stack_out": [
+        "box_exists#0",
+        "0x00"
+      ]
+    },
+    "479": {
+      "op": "intc_0 // 0",
+      "stack_out": [
+        "box_exists#0",
+        "0x00",
+        "0"
+      ]
+    },
+    "480": {
+      "op": "uncover 2",
+      "stack_out": [
+        "0x00",
+        "0",
+        "box_exists#0"
+      ]
+    },
+    "482": {
+      "op": "setbit",
+      "defined_out": [
+        "aggregate%encoded_bool%0#0"
+      ],
+      "stack_out": [
+        "aggregate%encoded_bool%0#0"
+      ]
+    },
+    "483": {
+      "op": "bytec_3 // 0x151f7c75",
+      "defined_out": [
+        "0x151f7c75",
+        "aggregate%encoded_bool%0#0"
+      ],
+      "stack_out": [
+        "aggregate%encoded_bool%0#0",
+        "0x151f7c75"
+      ]
+    },
+    "484": {
+      "op": "swap",
+      "stack_out": [
+        "0x151f7c75",
+        "aggregate%encoded_bool%0#0"
+      ]
+    },
+    "485": {
+      "op": "concat",
+      "defined_out": [
+        "tmp%2#0"
+      ],
+      "stack_out": [
+        "tmp%2#0"
+      ]
+    },
+    "486": {
+      "op": "log",
+      "stack_out": []
+    },
+    "487": {
+      "op": "intc_1 // 1",
+      "defined_out": [
+        "1"
+      ],
+      "stack_out": [
+        "1"
+      ]
+    },
+    "488": {
+      "op": "return",
+      "stack_out": []
+    },
+    "489": {
+      "subroutine": "AlgoPayOracle.AlgoPayOracle.get_stats[routing]",
+      "params": {},
+      "block": "get_stats",
+      "stack_in": [],
+      "op": "intc_0 // 0",
+      "defined_out": [
+        "0"
+      ],
+      "stack_out": [
+        "0"
+      ]
+    },
+    "490": {
+      "op": "bytec_0 // \"total_verified\"",
+      "defined_out": [
+        "\"total_verified\"",
+        "0"
+      ],
+      "stack_out": [
+        "0",
+        "\"total_verified\""
+      ]
+    },
+    "491": {
+      "op": "app_global_get_ex",
+      "defined_out": [
+        "maybe_exists%0#0",
+        "maybe_value%0#0"
+      ],
+      "stack_out": [
+        "maybe_value%0#0",
+        "maybe_exists%0#0"
+      ]
+    },
+    "492": {
+      "error": "check self.total_verified exists",
+      "op": "assert // check self.total_verified exists",
+      "stack_out": [
+        "maybe_value%0#0"
+      ]
+    },
+    "493": {
+      "op": "itob",
+      "defined_out": [
+        "aggregate%val_as_bytes%0#0"
+      ],
+      "stack_out": [
+        "aggregate%val_as_bytes%0#0"
+      ]
+    },
+    "494": {
+      "op": "bytec_3 // 0x151f7c75",
+      "defined_out": [
+        "0x151f7c75",
+        "aggregate%val_as_bytes%0#0"
+      ],
+      "stack_out": [
+        "aggregate%val_as_bytes%0#0",
+        "0x151f7c75"
+      ]
+    },
+    "495": {
+      "op": "swap",
+      "stack_out": [
+        "0x151f7c75",
+        "aggregate%val_as_bytes%0#0"
+      ]
+    },
+    "496": {
+      "op": "concat",
+      "defined_out": [
+        "tmp%1#0"
+      ],
+      "stack_out": [
+        "tmp%1#0"
+      ]
+    },
+    "497": {
+      "op": "log",
+      "stack_out": []
+    },
+    "498": {
+      "op": "intc_1 // 1",
+      "defined_out": [
+        "1"
+      ],
+      "stack_out": [
+        "1"
+      ]
+    },
+    "499": {
+      "op": "return",
+      "stack_out": []
+    },
+    "500": {
+      "subroutine": "AlgoPayOracle.AlgoPayOracle.admin[routing]",
+      "params": {},
+      "block": "admin",
+      "stack_in": [],
+      "op": "txn Sender",
+      "defined_out": [
+        "tmp%0#0"
+      ],
+      "stack_out": [
+        "tmp%0#0"
+      ]
+    },
+    "502": {
+      "op": "global CreatorAddress",
+      "defined_out": [
+        "tmp%0#0",
+        "tmp%1#0"
+      ],
+      "stack_out": [
+        "tmp%0#0",
+        "tmp%1#0"
+      ]
+    },
+    "504": {
+      "op": "==",
+      "defined_out": [
+        "tmp%2#0"
+      ],
+      "stack_out": [
+        "tmp%2#0"
+      ]
+    },
+    "505": {
+      "error": "only creator can update/delete",
+      "op": "assert // only creator can update/delete",
+      "stack_out": []
+    },
+    "506": {
+      "op": "intc_1 // 1",
+      "defined_out": [
+        "1"
+      ],
+      "stack_out": [
+        "1"
+      ]
+    },
+    "507": {
+      "op": "return",
+      "stack_out": []
+    }
+  }
+}
