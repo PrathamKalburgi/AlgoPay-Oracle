@@ -131,7 +131,7 @@ const ACTIONS = [
 ];
 
 const STEPS = [
-  { id: "payment",  label: "Payment Verified",       sub: "UPI confirmation" },
+  { id: "payment",  label: "Payment Verified",       sub: "Payment Verified" },
   { id: "oracle",   label: "Oracle Signed Proof",    sub: "Ed25519 signature committed"  },
   { id: "chain",    label: "On-chain Verification",  sub: "Algorand smart contract pass" },
 ];
