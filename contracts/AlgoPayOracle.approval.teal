@@ -4,42 +4,44 @@
 // algopy.arc4.ARC4Contract.approval_program() -> uint64:
 main:
     intcblock 0 1 2 8
-    bytecblock "total_verified" "oracle_pubkey" "oracle_address" 0x151f7c75
-    // AlgoPayOracle.py:27
+    bytecblock "oracle_count" "total_verified" 0x151f7c75 "min_amount" 0x31
+    // AlgoPayOracle.py:28
     // class AlgoPayOracle(ARC4Contract):
     pushbytes 0xd0439473 // method "admin()void"
     txna ApplicationArgs 0
     match main_admin_route@4
 
 main_switch_case_next@5:
-    // AlgoPayOracle.py:27
+    // AlgoPayOracle.py:28
     // class AlgoPayOracle(ARC4Contract):
     txn OnCompletion
     !
     assert
     txn ApplicationID
-    bz main_create_NoOp@12
-    pushbytess 0x5f7a0bf6 0x58759fa2 0xa4b5ea6d 0xf2eb2936 // method "verify_payment(string,string,uint64,string,uint64,byte[])bool", method "nop()void", method "check_payment(string)bool", method "get_stats()uint64"
+    bz main_create_NoOp@18
+    pushbytess 0xc1244cd5 0x3c223887 0x6c4f5ed6 0xa0c7b7d5 0xfcc16561 0xffe6ea59 0x58759fa2 0xa4b5ea6d 0xf2eb2936 0xce4ebd59 // method "set_min_amount(uint64)void", method "bootstrap_oracle(byte[])void", method "add_oracle(byte[])void", method "remove_oracle(byte[])void", method "is_oracle(byte[])bool", method "verify_payment(string,string,uint64,string,uint64,uint64,byte[],byte[])bool", method "nop()void", method "check_payment(string)bool", method "get_stats()uint64", method "get_oracle_count()uint64"
     txna ApplicationArgs 0
-    match verify_payment main_nop_route@8 check_payment get_stats
+    match set_min_amount bootstrap_oracle add_oracle remove_oracle is_oracle verify_payment main_nop_route@13 check_payment get_stats get_oracle_count
     err
 
-main_nop_route@8:
-    // AlgoPayOracle.py:103
+main_nop_route@13:
+    // AlgoPayOracle.py:216-217
+    // # ── nop ───────────────────────────────────────────────────────────────────
     // @abimethod
     intc_1 // 1
     return
 
-main_create_NoOp@12:
-    // AlgoPayOracle.py:27
+main_create_NoOp@18:
+    // AlgoPayOracle.py:28
     // class AlgoPayOracle(ARC4Contract):
-    pushbytes 0x20df3a54 // method "create(string)void"
+    pushbytes 0x8e79358d // method "create(byte[])void"
     txna ApplicationArgs 0
     match create
     err
 
 main_admin_route@4:
-    // AlgoPayOracle.py:117
+    // AlgoPayOracle.py:243-244
+    // # ── Admin ──────────────────────────────────────────────────────────────────
     // @abimethod(allow_actions=["UpdateApplication", "DeleteApplication"])
     intc_1 // 1
     txn OnCompletion
@@ -54,7 +56,8 @@ main_admin_route@4:
 
 // AlgoPayOracle.AlgoPayOracle.create[routing]() -> void:
 create:
-    // AlgoPayOracle.py:38
+    // AlgoPayOracle.py:51-52
+    // # ── Create ────────────────────────────────────────────────────────────────
     // @abimethod(create="require")
     txna ApplicationArgs 1
     dup
@@ -66,30 +69,66 @@ create:
     len
     ==
     assert // invalid number of bytes for arc4.dynamic_array<arc4.uint8>
-    // AlgoPayOracle.py:40
-    // self.oracle_pubkey.value  = Bytes(ORACLE_PUBKEY_BYTES)
-    bytec_1 // "oracle_pubkey"
-    pushbytes 0xf3af36be0b65eca73fbe33e133b50b7f6931b46f30e8005425266da5a91c9912
-    app_global_put
-    // AlgoPayOracle.py:41
-    // self.oracle_address.value = oracle_addr
-    bytec_2 // "oracle_address"
-    swap
-    app_global_put
-    // AlgoPayOracle.py:42
+    // AlgoPayOracle.py:61
+    // assert initial_oracle_pubkey.native.length == UInt64(32), "pubkey must be 32 bytes"
+    extract 2 0
+    len
+    pushint 32
+    ==
+    assert // pubkey must be 32 bytes
+    // AlgoPayOracle.py:63
     // self.total_verified.value = UInt64(0)
-    bytec_0 // "total_verified"
+    bytec_1 // "total_verified"
     intc_0 // 0
     app_global_put
-    // AlgoPayOracle.py:38
+    // AlgoPayOracle.py:64
+    // self.oracle_count.value   = UInt64(0)
+    bytec_0 // "oracle_count"
+    intc_0 // 0
+    app_global_put
+    // AlgoPayOracle.py:65
+    // self.min_amount.value = UInt64(100)
+    bytec_3 // "min_amount"
+    pushint 100
+    app_global_put
+    // AlgoPayOracle.py:51-52
+    // # ── Create ────────────────────────────────────────────────────────────────
     // @abimethod(create="require")
     intc_1 // 1
     return
 
 
-// AlgoPayOracle.AlgoPayOracle.verify_payment[routing]() -> void:
-verify_payment:
-    // AlgoPayOracle.py:44
+// AlgoPayOracle.AlgoPayOracle.set_min_amount[routing]() -> void:
+set_min_amount:
+    // AlgoPayOracle.py:67
+    // @abimethod
+    txna ApplicationArgs 1
+    dup
+    len
+    intc_3 // 8
+    ==
+    assert // invalid number of bytes for arc4.uint64
+    // AlgoPayOracle.py:69
+    // assert op.Txn.sender == op.Global.creator_address, "only creator"
+    txn Sender
+    global CreatorAddress
+    ==
+    assert // only creator
+    // AlgoPayOracle.py:70
+    // self.min_amount.value = new_amount.native # <--- ALLOW ADMIN UPDATES
+    btoi
+    bytec_3 // "min_amount"
+    swap
+    app_global_put
+    // AlgoPayOracle.py:67
+    // @abimethod
+    intc_1 // 1
+    return
+
+
+// AlgoPayOracle.AlgoPayOracle.bootstrap_oracle[routing]() -> void:
+bootstrap_oracle:
+    // AlgoPayOracle.py:74
     // @abimethod
     txna ApplicationArgs 1
     dup
@@ -99,41 +138,241 @@ verify_payment:
     +
     dig 1
     len
-    dup
-    uncover 2
     ==
     assert // invalid number of bytes for arc4.dynamic_array<arc4.uint8>
-    txna ApplicationArgs 2
+    // AlgoPayOracle.py:81
+    // assert op.Txn.sender == op.Global.creator_address, "only creator"
+    txn Sender
+    global CreatorAddress
+    ==
+    assert // only creator
+    // AlgoPayOracle.py:82
+    // assert self.oracle_count.value == UInt64(0), "already initialized"
+    intc_0 // 0
+    bytec_0 // "oracle_count"
+    app_global_get_ex
+    assert // check self.oracle_count exists
+    !
+    assert // already initialized
+    // AlgoPayOracle.py:83
+    // assert initial_oracle_pubkey.native.length == UInt64(32), "pubkey must be 32 bytes"
+    extract 2 0
+    dup
+    len
+    pushint 32
+    ==
+    assert // pubkey must be 32 bytes
+    // AlgoPayOracle.py:85
+    // op.Box.put(initial_oracle_pubkey.native, Bytes(b"1"))
+    bytec 4 // 0x31
+    box_put
+    // AlgoPayOracle.py:86
+    // self.oracle_count.value = UInt64(1)
+    bytec_0 // "oracle_count"
+    intc_1 // 1
+    app_global_put
+    // AlgoPayOracle.py:74
+    // @abimethod
+    intc_1 // 1
+    return
+
+
+// AlgoPayOracle.AlgoPayOracle.add_oracle[routing]() -> void:
+add_oracle:
+    // AlgoPayOracle.py:88-89
+    // # ── Oracle management (creator only) ──────────────────────────────────────
+    // @abimethod
+    txna ApplicationArgs 1
     dup
     intc_0 // 0
     extract_uint16 // on error: invalid array length header
     intc_2 // 2
     +
     dig 1
+    len
+    ==
+    assert // invalid number of bytes for arc4.dynamic_array<arc4.uint8>
+    // AlgoPayOracle.py:96
+    // assert op.Txn.sender == op.Global.creator_address, "only creator"
+    txn Sender
+    global CreatorAddress
+    ==
+    assert // only creator
+    // AlgoPayOracle.py:97
+    // assert pubkey.native.length == UInt64(32), "pubkey must be 32 bytes"
+    extract 2 0
+    dup
+    len
+    pushint 32
+    ==
+    assert // pubkey must be 32 bytes
+    // AlgoPayOracle.py:99
+    // box_val, already_exists = op.Box.get(pubkey.native)
+    dup
+    box_len
+    bury 1
+    // AlgoPayOracle.py:100
+    // assert not already_exists, "oracle already registered"
+    !
+    assert // oracle already registered
+    // AlgoPayOracle.py:102
+    // op.Box.put(pubkey.native, Bytes(b"1"))
+    bytec 4 // 0x31
+    box_put
+    // AlgoPayOracle.py:103
+    // self.oracle_count.value += UInt64(1)
+    intc_0 // 0
+    bytec_0 // "oracle_count"
+    app_global_get_ex
+    assert // check self.oracle_count exists
+    intc_1 // 1
+    +
+    bytec_0 // "oracle_count"
+    swap
+    app_global_put
+    // AlgoPayOracle.py:88-89
+    // # ── Oracle management (creator only) ──────────────────────────────────────
+    // @abimethod
+    intc_1 // 1
+    return
+
+
+// AlgoPayOracle.AlgoPayOracle.remove_oracle[routing]() -> void:
+remove_oracle:
+    // AlgoPayOracle.py:105
+    // @abimethod
+    txna ApplicationArgs 1
+    dup
+    intc_0 // 0
+    extract_uint16 // on error: invalid array length header
+    intc_2 // 2
+    +
+    dig 1
+    len
+    ==
+    assert // invalid number of bytes for arc4.dynamic_array<arc4.uint8>
+    // AlgoPayOracle.py:111
+    // assert op.Txn.sender == op.Global.creator_address, "only creator"
+    txn Sender
+    global CreatorAddress
+    ==
+    assert // only creator
+    // AlgoPayOracle.py:112
+    // assert self.oracle_count.value > UInt64(1), "cannot remove last oracle"
+    intc_0 // 0
+    bytec_0 // "oracle_count"
+    app_global_get_ex
+    assert // check self.oracle_count exists
+    dup
+    intc_1 // 1
+    >
+    assert // cannot remove last oracle
+    // AlgoPayOracle.py:114
+    // existed = op.Box.delete(pubkey.native)
+    swap
+    extract 2 0
+    box_del
+    // AlgoPayOracle.py:115
+    // assert existed, "oracle not registered"
+    assert // oracle not registered
+    // AlgoPayOracle.py:117
+    // self.oracle_count.value -= UInt64(1)
+    intc_1 // 1
+    -
+    bytec_0 // "oracle_count"
+    swap
+    app_global_put
+    // AlgoPayOracle.py:105
+    // @abimethod
+    intc_1 // 1
+    return
+
+
+// AlgoPayOracle.AlgoPayOracle.is_oracle[routing]() -> void:
+is_oracle:
+    // AlgoPayOracle.py:119
+    // @abimethod(readonly=True)
+    txna ApplicationArgs 1
+    dup
+    intc_0 // 0
+    extract_uint16 // on error: invalid array length header
+    intc_2 // 2
+    +
+    dig 1
+    len
+    ==
+    assert // invalid number of bytes for arc4.dynamic_array<arc4.uint8>
+    // AlgoPayOracle.py:122
+    // box_val, exists = op.Box.get(pubkey.native)
+    extract 2 0
+    box_len
+    bury 1
+    // AlgoPayOracle.py:123
+    // return arc4.Bool(exists)
+    pushbytes 0x00
+    intc_0 // 0
+    uncover 2
+    setbit
+    // AlgoPayOracle.py:119
+    // @abimethod(readonly=True)
+    bytec_2 // 0x151f7c75
+    swap
+    concat
+    log
+    intc_1 // 1
+    return
+
+
+// AlgoPayOracle.AlgoPayOracle.verify_payment[routing]() -> void:
+verify_payment:
+    // AlgoPayOracle.py:125-126
+    // # ── verify_payment ─────────────────────────────────────────────────────────
+    // @abimethod
+    txna ApplicationArgs 1
+    dupn 2
+    intc_0 // 0
+    extract_uint16 // on error: invalid array length header
+    intc_2 // 2
+    +
+    swap
+    len
+    dup
+    uncover 2
+    ==
+    assert // invalid number of bytes for arc4.dynamic_array<arc4.uint8>
+    txna ApplicationArgs 2
+    dupn 2
+    intc_0 // 0
+    extract_uint16 // on error: invalid array length header
+    intc_2 // 2
+    +
+    swap
     len
     dup
     uncover 2
     ==
     assert // invalid number of bytes for arc4.dynamic_array<arc4.uint8>
     txna ApplicationArgs 3
-    dup
+    dupn 2
     len
     intc_3 // 8
     ==
     assert // invalid number of bytes for arc4.uint64
     txna ApplicationArgs 4
     dup
+    cover 2
+    dup
     intc_0 // 0
     extract_uint16 // on error: invalid array length header
     intc_2 // 2
     +
-    dig 1
+    swap
     len
-    dup
-    uncover 2
     ==
     assert // invalid number of bytes for arc4.dynamic_array<arc4.uint8>
     txna ApplicationArgs 5
+    dup
+    cover 2
     dup
     len
     intc_3 // 8
@@ -141,184 +380,226 @@ verify_payment:
     assert // invalid number of bytes for arc4.uint64
     txna ApplicationArgs 6
     dup
+    cover 3
+    len
+    intc_3 // 8
+    ==
+    assert // invalid number of bytes for arc4.uint64
+    txna ApplicationArgs 7
+    dup
+    cover 3
+    dup
     intc_0 // 0
     extract_uint16 // on error: invalid array length header
     intc_2 // 2
     +
-    dig 1
+    swap
     len
     ==
     assert // invalid number of bytes for arc4.dynamic_array<arc4.uint8>
-    // AlgoPayOracle.py:55-56
-    // # 1. Minimum amount check
-    // assert amount.native >= MIN_AMOUNT, "insufficient payment amount"
-    dig 4
+    txna ApplicationArgs 8
+    dup
+    cover 3
+    dup
+    intc_0 // 0
+    extract_uint16 // on error: invalid array length header
+    intc_2 // 2
+    +
+    swap
+    len
+    ==
+    assert // invalid number of bytes for arc4.dynamic_array<arc4.uint8>
+    // AlgoPayOracle.py:155-156
+    // # 1. Minimum amount
+    // assert amount.native >= self.min_amount.value, "insufficient payment amount"
+    swap
     btoi
-    pushint 100
+    intc_0 // 0
+    bytec_3 // "min_amount"
+    app_global_get_ex
+    assert // check self.min_amount exists
     >=
     assert // insufficient payment amount
-    // AlgoPayOracle.py:58-59
-    // # 2. Timestamp expiry — proof valid for 5 min only
-    // assert op.Global.latest_timestamp + 15 >= timestamp.native, "timestamp in future"
-    global LatestTimestamp
-    pushint 15
-    +
-    dig 2
+    // AlgoPayOracle.py:158-160
+    // # 2. Timestamp validity — if/else prevents UInt64 underflow on future timestamps.
+    // # Subtraction is safe in each branch because the direction is known.
+    // if timestamp.native > op.Global.latest_timestamp:
     btoi
-    swap
-    dig 1
-    >=
-    assert // timestamp in future
-    // AlgoPayOracle.py:60
-    // assert op.Global.latest_timestamp - timestamp.native < PROOF_VALIDITY_SECS, "proof expired"
+    dup
     global LatestTimestamp
-    swap
+    >
+    bz verify_payment_else_body@3
+    // AlgoPayOracle.py:161-162
+    // # Proof from the future: allow up to 30 s of clock skew
+    // assert timestamp.native - op.Global.latest_timestamp <= UInt64(30), "timestamp too far in future"
+    global LatestTimestamp
     -
-    pushint 300
-    <
-    assert // proof expired
-    // AlgoPayOracle.py:66
-    // payment_id.native.bytes +
-    dig 8
-    extract 2 0
-    // AlgoPayOracle.py:64-65
-    // Bytes(b"MX") +
-    // Bytes(PROOF_PREFIX) +
-    pushbytes 0x4d58416c676f5061793a76313a
-    // AlgoPayOracle.py:64-66
-    // Bytes(b"MX") +
-    // Bytes(PROOF_PREFIX) +
-    // payment_id.native.bytes +
+    pushint 30
+    <=
+    assert // timestamp too far in future
+
+verify_payment_after_if_else@4:
+    // AlgoPayOracle.py:167-168
+    // # 3. Oracle registry check
+    // oracle_box_val, oracle_registered = op.Box.get(oracle_pubkey.native)
     dig 1
-    concat
-    // AlgoPayOracle.py:67
-    // action.native.bytes +
-    dig 8
     extract 2 0
-    // AlgoPayOracle.py:64-67
-    // Bytes(b"MX") +
-    // Bytes(PROOF_PREFIX) +
-    // payment_id.native.bytes +
-    // action.native.bytes +
-    concat
-    // AlgoPayOracle.py:68
-    // currency.native.bytes +
-    dig 5
-    extract 2 0
-    // AlgoPayOracle.py:64-68
-    // Bytes(b"MX") +
-    // Bytes(PROOF_PREFIX) +
-    // payment_id.native.bytes +
-    // action.native.bytes +
-    // currency.native.bytes +
-    concat
-    // AlgoPayOracle.py:64-69
-    // Bytes(b"MX") +
-    // Bytes(PROOF_PREFIX) +
-    // payment_id.native.bytes +
-    // action.native.bytes +
-    // currency.native.bytes +
-    // amount.bytes +
-    dig 6
-    concat
-    // AlgoPayOracle.py:64-70
-    // Bytes(b"MX") +
-    // Bytes(PROOF_PREFIX) +
-    // payment_id.native.bytes +
-    // action.native.bytes +
-    // currency.native.bytes +
-    // amount.bytes +
-    // timestamp.bytes
-    dig 3
-    concat
-    // AlgoPayOracle.py:76
-    // signature.native,
-    uncover 2
-    extract 2 0
-    // AlgoPayOracle.py:77
-    // self.oracle_pubkey.value,
-    intc_0 // 0
-    bytec_1 // "oracle_pubkey"
-    app_global_get_ex
-    assert // check self.oracle_pubkey exists
-    // AlgoPayOracle.py:73-78
-    // # 4. On-chain Ed25519 verification
-    // sig_valid = op.ed25519verify_bare(
-    //     message,
-    //     signature.native,
-    //     self.oracle_pubkey.value,
-    // )
-    ed25519verify_bare
-    // AlgoPayOracle.py:79
-    // assert sig_valid, "invalid oracle signature"
-    assert // invalid oracle signature
-    // AlgoPayOracle.py:83
-    // box_val, box_exists = op.Box.get(box_key)
     dup
     box_len
     bury 1
-    // AlgoPayOracle.py:84
-    // assert not box_exists, "payment already processed"
+    // AlgoPayOracle.py:169
+    // assert oracle_registered, "oracle not registered"
+    assert // oracle not registered
+    // AlgoPayOracle.py:171
+    // assert app_id.native == op.Global.current_application_id.id, "proof not valid for this app"
+    dig 3
+    dup
+    btoi
+    global CurrentApplicationID
+    ==
+    assert // proof not valid for this app
+    // AlgoPayOracle.py:179
+    // payment_id.native.bytes +
+    dig 11
+    dup
+    cover 3
+    extract 2 0
+    // AlgoPayOracle.py:177-178
+    // Bytes(b"MX") +
+    // Bytes(PROOF_PREFIX) +
+    pushbytes 0x4d58416c676f5061793a76313a
+    // AlgoPayOracle.py:177-179
+    // Bytes(b"MX") +
+    // Bytes(PROOF_PREFIX) +
+    // payment_id.native.bytes +
+    dig 1
+    concat
+    // AlgoPayOracle.py:180
+    // action.native.bytes +
+    dig 12
+    dup
+    cover 5
+    extract 2 0
+    // AlgoPayOracle.py:177-180
+    // Bytes(b"MX") +
+    // Bytes(PROOF_PREFIX) +
+    // payment_id.native.bytes +
+    // action.native.bytes +
+    concat
+    // AlgoPayOracle.py:181
+    // currency.native.bytes +
+    dig 10
+    dup
+    cover 5
+    extract 2 0
+    // AlgoPayOracle.py:177-181
+    // Bytes(b"MX") +
+    // Bytes(PROOF_PREFIX) +
+    // payment_id.native.bytes +
+    // action.native.bytes +
+    // currency.native.bytes +
+    concat
+    // AlgoPayOracle.py:177-182
+    // Bytes(b"MX") +
+    // Bytes(PROOF_PREFIX) +
+    // payment_id.native.bytes +
+    // action.native.bytes +
+    // currency.native.bytes +
+    // amount.bytes +
+    dig 12
+    dup
+    cover 5
+    concat
+    // AlgoPayOracle.py:177-183
+    // Bytes(b"MX") +
+    // Bytes(PROOF_PREFIX) +
+    // payment_id.native.bytes +
+    // action.native.bytes +
+    // currency.native.bytes +
+    // amount.bytes +
+    // timestamp.bytes +
+    dig 11
+    dup
+    cover 6
+    concat
+    // AlgoPayOracle.py:177-184
+    // Bytes(b"MX") +
+    // Bytes(PROOF_PREFIX) +
+    // payment_id.native.bytes +
+    // action.native.bytes +
+    // currency.native.bytes +
+    // amount.bytes +
+    // timestamp.bytes +
+    // app_id.bytes
+    uncover 2
+    concat
+    // AlgoPayOracle.py:189
+    // signature.native,
+    dig 8
+    extract 2 0
+    // AlgoPayOracle.py:187-191
+    // sig_valid = op.ed25519verify_bare(
+    //     message,
+    //     signature.native,
+    //     oracle_pubkey.native,
+    // )
+    uncover 3
+    ed25519verify_bare
+    // AlgoPayOracle.py:192
+    // assert sig_valid, "invalid oracle signature"
+    assert // invalid oracle signature
+    // AlgoPayOracle.py:197
+    // pay_box_val, already_processed = op.Box.get(box_key)
+    dup
+    box_len
+    bury 1
+    // AlgoPayOracle.py:198
+    // assert not already_processed, "payment already processed"
     !
     assert // payment already processed
-    // AlgoPayOracle.py:86
+    // AlgoPayOracle.py:200
     // op.Box.put(box_key, Bytes(b"1"))
-    pushbytes 0x31
+    bytec 4 // 0x31
     box_put
-    // AlgoPayOracle.py:87
+    // AlgoPayOracle.py:201
     // self.total_verified.value += UInt64(1)
     intc_0 // 0
-    bytec_0 // "total_verified"
+    bytec_1 // "total_verified"
     app_global_get_ex
     assert // check self.total_verified exists
     intc_1 // 1
     +
-    bytec_0 // "total_verified"
+    bytec_1 // "total_verified"
     swap
     app_global_put
-    // AlgoPayOracle.py:96
-    // oracle_address=self.oracle_address.value,
-    intc_0 // 0
-    bytec_2 // "oracle_address"
-    app_global_get_ex
-    assert // check self.oracle_address exists
-    // AlgoPayOracle.py:91-98
+    // AlgoPayOracle.py:205-211
     // PaymentVerified(
     //     payment_id=payment_id,
     //     action=action,
     //     amount=amount,
     //     currency=currency,
-    //     oracle_address=self.oracle_address.value,
     //     timestamp=timestamp,
     // )
-    pushint 24
-    uncover 8
+    pushint 22
+    dig 14
     +
     dup
     itob
     extract 6 2
-    pushbytes 0x0018
+    pushbytes 0x0016
     swap
     concat
     swap
-    uncover 7
+    dig 13
     +
     swap
-    uncover 6
-    concat
-    dig 1
-    itob
-    extract 6 2
-    concat
-    swap
-    uncover 4
-    +
-    itob
-    extract 6 2
-    concat
     uncover 2
     concat
-    uncover 4
+    swap
+    itob
+    extract 6 2
+    concat
+    swap
     concat
     uncover 3
     concat
@@ -326,33 +607,46 @@ verify_payment:
     concat
     swap
     concat
-    // AlgoPayOracle.py:89-99
-    // # 6. Emit richer ARC-28 event
+    // AlgoPayOracle.py:203-212
+    // # ARC-28 event
     // arc4.emit(
     //     PaymentVerified(
     //         payment_id=payment_id,
     //         action=action,
     //         amount=amount,
     //         currency=currency,
-    //         oracle_address=self.oracle_address.value,
     //         timestamp=timestamp,
     //     )
     // )
-    pushbytes 0xd049d7f3 // method "PaymentVerified(string,string,uint64,string,string,uint64)"
+    pushbytes 0x78d41e10 // method "PaymentVerified(string,string,uint64,string,uint64)"
     swap
     concat
     log
-    // AlgoPayOracle.py:44
+    // AlgoPayOracle.py:125-126
+    // # ── verify_payment ─────────────────────────────────────────────────────────
     // @abimethod
     pushbytes 0x151f7c7580
     log
     intc_1 // 1
     return
 
+verify_payment_else_body@3:
+    // AlgoPayOracle.py:164-165
+    // # Proof from the past: enforce the 5-minute freshness window
+    // assert op.Global.latest_timestamp - timestamp.native < UInt64(PROOF_VALIDITY_SECS), "proof expired"
+    global LatestTimestamp
+    swap
+    -
+    pushint 300
+    <
+    assert // proof expired
+    b verify_payment_after_if_else@4
+
 
 // AlgoPayOracle.AlgoPayOracle.check_payment[routing]() -> void:
 check_payment:
-    // AlgoPayOracle.py:108
+    // AlgoPayOracle.py:226-227
+    // # ── Read-only helpers ──────────────────────────────────────────────────────
     // @abimethod(readonly=True)
     txna ApplicationArgs 1
     dup
@@ -364,20 +658,21 @@ check_payment:
     len
     ==
     assert // invalid number of bytes for arc4.dynamic_array<arc4.uint8>
-    // AlgoPayOracle.py:110
-    // box_val, box_exists = op.Box.get(payment_id.native.bytes)
+    // AlgoPayOracle.py:230
+    // box_val, exists = op.Box.get(payment_id.native.bytes)
     extract 2 0
     box_len
     bury 1
-    // AlgoPayOracle.py:111
-    // return arc4.Bool(box_exists)
+    // AlgoPayOracle.py:231
+    // return arc4.Bool(exists)
     pushbytes 0x00
     intc_0 // 0
     uncover 2
     setbit
-    // AlgoPayOracle.py:108
+    // AlgoPayOracle.py:226-227
+    // # ── Read-only helpers ──────────────────────────────────────────────────────
     // @abimethod(readonly=True)
-    bytec_3 // 0x151f7c75
+    bytec_2 // 0x151f7c75
     swap
     concat
     log
@@ -387,16 +682,35 @@ check_payment:
 
 // AlgoPayOracle.AlgoPayOracle.get_stats[routing]() -> void:
 get_stats:
-    // AlgoPayOracle.py:115
+    // AlgoPayOracle.py:236
     // return arc4.UInt64(self.total_verified.value)
     intc_0 // 0
-    bytec_0 // "total_verified"
+    bytec_1 // "total_verified"
     app_global_get_ex
     assert // check self.total_verified exists
     itob
-    // AlgoPayOracle.py:113
+    // AlgoPayOracle.py:233
     // @abimethod(readonly=True)
-    bytec_3 // 0x151f7c75
+    bytec_2 // 0x151f7c75
+    swap
+    concat
+    log
+    intc_1 // 1
+    return
+
+
+// AlgoPayOracle.AlgoPayOracle.get_oracle_count[routing]() -> void:
+get_oracle_count:
+    // AlgoPayOracle.py:241
+    // return arc4.UInt64(self.oracle_count.value)
+    intc_0 // 0
+    bytec_0 // "oracle_count"
+    app_global_get_ex
+    assert // check self.oracle_count exists
+    itob
+    // AlgoPayOracle.py:238
+    // @abimethod(readonly=True)
+    bytec_2 // 0x151f7c75
     swap
     concat
     log
@@ -406,17 +720,18 @@ get_stats:
 
 // AlgoPayOracle.AlgoPayOracle.admin[routing]() -> void:
 admin:
-    // AlgoPayOracle.py:120
+    // AlgoPayOracle.py:248
     // op.Txn.sender == op.Global.creator_address
     txn Sender
     global CreatorAddress
     ==
-    // AlgoPayOracle.py:119-121
+    // AlgoPayOracle.py:247-249
     // assert (
     //     op.Txn.sender == op.Global.creator_address
     // ), "only creator can update/delete"
     assert // only creator can update/delete
-    // AlgoPayOracle.py:117
+    // AlgoPayOracle.py:243-244
+    // # ── Admin ──────────────────────────────────────────────────────────────────
     // @abimethod(allow_actions=["UpdateApplication", "DeleteApplication"])
     intc_1 // 1
     return

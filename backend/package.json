@@ -1,18 +1,25 @@
 {
-  "name": "backend",
+  "name": "algopay-oracle-backend",
   "version": "1.0.0",
+  "description": "AlgoPay Oracle backend server",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node index.js",
+    "dev": "DEMO_MODE=true node index.js",
+    "dev:local": "DEMO_MODE=true ALGO_NETWORK=localnet node index.js",
+    "test": "node --test tests/unit.test.js",
+    "test:unit": "node --test tests/unit.test.js",
+    "test:integration": "ALGO_NETWORK=localnet node --test tests/integration.test.js",
+    "test:all": "node --test tests/unit.test.js && ALGO_NETWORK=localnet node --test tests/integration.test.js"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
   "dependencies": {
-    "@dotenvx/dotenvx": "^1.61.0",
-    "algosdk": "^3.5.2",
-    "cors": "^2.8.6",
-    "express": "^5.2.1"
+    "@algopayoracle/oracle-sdk": "^1.0.3",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.0",
+    "express": "^4.18.0",
+    "express-rate-limit": "^7.0.0"
   },
-  "description": ""
+  "engines": {
+    "node": ">=18.0.0"
+  }
 }
