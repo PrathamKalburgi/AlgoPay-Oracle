@@ -101,9 +101,9 @@ Smart contracts treating real-world payments as programmable cryptographic event
 
 ## Architecture Flow
 
-```
-![Alt text](docs/images/architecture.png)
-```
+
+![Architecture](docs/images/architecture.png)
+
 
 ---
 
