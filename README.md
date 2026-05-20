@@ -4,7 +4,7 @@
 
 **The contract never trusts backend databases. It only evaluates cryptographic proofs.**
 
-[Live Demo Sandbox]((https://algopay-oracle.vercel.app)) · [TestNet Dashboard](https://algopay-oracle.vercel.app/#/dashboard) · [Walkthrough Video](https://youtu.be/aeUGX7-iV6E) · [npm Package](https://www.npmjs.com/package/@algopayoracle/oracle-sdk)
+[Live Demo Sandbox](https://algopay-oracle.vercel.app) · [TestNet Dashboard](https://algopay-oracle.vercel.app/#/dashboard) · [Walkthrough Video](https://youtu.be/aeUGX7-iV6E) · [npm Package](https://www.npmjs.com/package/@algopayoracle/oracle-sdk)
 
 ---
 
