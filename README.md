@@ -89,7 +89,7 @@ Smart contracts treating real-world payments as programmable cryptographic event
 
 ## What This Enables
 
-**UPI-Native Gating:** A ₹100 UPI payment instantly unlocks a premium research report, SaaS access, or paid API — verified cryptographically on-chain, not by a database check.
+**UPI-Native Gating:** A ₹100 UPI payment instantly unlocks a premium research report, SaaS access, or paid API - verified cryptographically on-chain, not by a database check.
 
 **On-Chain Purchase Receipts:** A traditional Razorpay checkout automatically mints a standard ARC-69 NFT receipt directly into a user's wallet as immutable proof of purchase.
 
@@ -175,10 +175,10 @@ All provider-specific verification logic is isolated inside adapter modules. The
 
 Supported adapters include:
 
-- **Razorpay** (`RazorpayAdapter` — webhook validation & secure client-side checkouts)
-- **Stripe** (`StripeAdapter` — payment intent success handlers)
-- **PayU** (`PayUAdapter` — SHA-512 hash chain verification)
-- **PhonePe** (`PhonePeAdapter` — UPI-native verify headers)
+- **Razorpay** (`RazorpayAdapter` - webhook validation & secure client-side checkouts)
+- **Stripe** (`StripeAdapter` - payment intent success handlers)
+- **PayU** (`PayUAdapter` - SHA-512 hash chain verification)
+- **PhonePe** (`PhonePeAdapter` - UPI-native verify headers)
 - **Generic Adapter** (custom HMAC / checksum verification for any gateway)
 
 ---
