@@ -169,6 +169,11 @@ What it does, in order:
 4. Anchors the proof on Algorand TestNet
 5. Returns the confirmed transaction ID and a live Lora explorer link
 
+Alternatively, run the example directly from the repo:
+```bash
+ORACLE_MNEMONIC="your 25 words" node examples/quickstart.js
+```
+
 ---
 
 ### Full Integration — Connect any payment gateway
