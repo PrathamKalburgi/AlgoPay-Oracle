@@ -327,7 +327,7 @@ DEMO_MODE=true
 Start the API Server:
 
 ```bash
-npm run example
+npm start
 ```
 
 ### Frontend
