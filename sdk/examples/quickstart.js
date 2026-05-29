@@ -5,10 +5,15 @@
  * A real payment proof is signed and anchored on Algorand TestNet.
  *
  * Run:
- *   ORACLE_MNEMONIC="your 25 words" node examples/quickstart.js
+ *   $env:ORACLE_MNEMONIC="your 25 words" 
+ *   npx algopay quickstart
  */
 
-require("dotenv").config();
+try {
+  require("dotenv").config();
+} catch (_) {
+  // dotenv is optional when installed from npm
+}
 const { AlgoPayClient, OracleSigner } = require("../src");
 
 async function main() {
@@ -39,6 +44,7 @@ async function main() {
     amount:     100,
     action:     "unlock",
     currency:   "INR",
+    provider:   "demo",
   });
 
   console.log("✍️  Signed proof:");
@@ -55,6 +61,7 @@ async function main() {
     amount:     proof.amount,
     action:     proof.action,
     currency:   proof.currency,
+    provider:   proof.provider,
   });
 
   console.log("\n✅ Success!");

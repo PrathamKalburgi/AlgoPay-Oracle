@@ -13,7 +13,7 @@
     "test:all": "node --test tests/unit.test.js && ALGO_NETWORK=localnet node --test tests/integration.test.js"
   },
   "dependencies": {
-    "@algopayoracle/oracle-sdk": "^1.0.3",
+    "@algopayoracle/oracle-sdk": "^1.0.5",
     "cors": "^2.8.5",
     "dotenv": "^16.0.0",
     "express": "^4.18.0",

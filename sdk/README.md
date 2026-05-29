@@ -23,6 +23,35 @@ Payment Gateway → Webhook → Oracle Signs → Algorand Contract → Action Ex
 
 ## Quickstart
 
+### 30-Second Path — See a live APC-1 proof on TestNet
+
+No integration needed. This generates a real oracle identity, signs an APC-1 credential, verifies it off-chain, anchors it on Algorand TestNet, and returns a live explorer link.
+
+**Linux / macOS**
+```bash
+npm install @algopayoracle/oracle-sdk
+export ORACLE_MNEMONIC="your 25 words"
+npx algopay quickstart
+```
+
+**Windows (PowerShell)**
+```powershell
+npm install @algopayoracle/oracle-sdk
+$env:ORACLE_MNEMONIC="your 25 words"
+npx algopay quickstart
+```
+
+What it does, in order:
+1. Derives your oracle address and Ed25519 public key from the mnemonic
+2. Signs a test payment as an APC-1 credential
+3. Verifies the proof off-chain (no network required)
+4. Anchors the proof on Algorand TestNet
+5. Returns the confirmed transaction ID and a live Lora explorer link
+
+---
+
+## Quick Integration
+
 ```js
 const { AlgoPayClient } = require("@algopayoracle/oracle-sdk");
 
