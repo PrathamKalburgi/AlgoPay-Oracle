@@ -231,6 +231,7 @@ function ExplorerTab() {
   };
 
   const proof = result?.proof;
+  const isJsonProof = txId.trim().startsWith("{");
 
   return (
     <div style={{ display:"flex", flexDirection:"column", gap:20, maxWidth:780 }}>
@@ -297,11 +298,29 @@ function ExplorerTab() {
                     <span style={{ color:"var(--text)", fontFamily:"var(--mono)", fontSize:11 }}>{v}</span>
                   </div>
                 ))}
-                <div style={{ marginTop:14 }}>
-                  <a href={`https://lora.algokit.io/testnet/transaction/${txId}`} target="_blank" rel="noreferrer" style={{ display:"block", padding:"9px 0", background:"var(--accent-dim)", border:"1px solid var(--border)", borderRadius:"var(--r)", color:"var(--accent)", fontFamily:"var(--mono)", fontSize:12, textDecoration:"none", textAlign:"center" }}>
-                    View on Lora ↗
-                  </a>
-                </div>
+                {!isJsonProof && (
+  			<div style={{ marginTop:14 }}>
+    			<a
+      			href={`https://lora.algokit.io/testnet/transaction/${txId.trim()}`}
+      			target="_blank"
+      			rel="noreferrer"
+      			style={{
+        		display:"block",
+        		padding:"9px 0",
+        		background:"var(--accent-dim)",
+        		border:"1px solid var(--border)",
+        		borderRadius:"var(--r)",
+        		color:"var(--accent)",
+        		fontFamily:"var(--mono)",
+        		fontSize:12,
+        		textDecoration:"none",
+        		textAlign:"center"
+      			}}
+    			>
+      		  View on Lora ↗
+    		 </a>
+  		 </div>
+		)}
               </div>
             </div>
           )}

@@ -92,10 +92,6 @@ class RazorpayAdapter {
       throw new ProviderAuthError("razorpay", "payment signature mismatch");
     }
 
-    if (!this.orderStore) {
-      throw new ConfigError("RazorpayAdapter: orderStore is required for parseClientPayment — amount cannot be trusted from client");
-    }
-
     // Amount MUST come from the server-side order record, not the request body
     // This is a synchronous path so we return a promise that resolves the event
     // Callers must await this if orderStore.consume is async
