@@ -505,14 +505,19 @@ process.on("SIGINT",  () => shutdown("SIGINT"));
 // ─── Start ────────────────────────────────────────────────────────────────────
 const PUBLIC_PORT = Number(process.env.PORT || 5000);
 
-publicApp.listen(PUBLIC_PORT, () => {
-  log.info(`Server started`, { port: PUBLIC_PORT, bind: "0.0.0.0" });
-  log.info(`Razorpay: ${hasRazorpay ? "configured" : "not configured"}`);
-  log.info(`Demo mode: ${DEMO_MODE}`);
-  log.info(`Admin auth: ${process.env.ADMIN_API_KEY ? "X-Admin-Key required" : "⚠️ no key set"}`);
-  
-  if (IS_PRODUCTION && !process.env.ADMIN_API_KEY) {
-    log.error("ADMIN_API_KEY required in production");
-    process.exit(1);
-  }
-});
+if (require.main === module) {
+  publicApp.listen(PUBLIC_PORT, () => {
+    log.info(`Server started`, { port: PUBLIC_PORT, bind: "0.0.0.0" });
+    log.info(`Razorpay: ${hasRazorpay ? "configured" : "not configured"}`);
+    log.info(`Demo mode: ${DEMO_MODE}`);
+    log.info(`Admin auth: ${process.env.ADMIN_API_KEY ? "X-Admin-Key required" : "⚠️ no key set"}`);
+    
+    if (IS_PRODUCTION && !process.env.ADMIN_API_KEY) {
+      log.error("ADMIN_API_KEY required in production");
+      process.exit(1);
+    }
+  });
+}
+
+// Export the app for Supertest without binding to a port
+module.exports = { publicApp };
